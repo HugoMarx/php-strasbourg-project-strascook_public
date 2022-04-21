@@ -4,8 +4,7 @@ namespace App\Model;
 
 use App\Model\AbstractManager;
 
-class BO_ItemManager extends AbstractManager {
-
+class BOItemManager extends AbstractManager
+{
     public const TABLE = 'products';
-
 }
