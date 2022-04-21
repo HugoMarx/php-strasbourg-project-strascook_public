@@ -1,34 +1,36 @@
 <section class='my-5'>
-        <div class="container w-50">
-            <div class="mb-3">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nom du plat">
-            </div>
-            <div class="mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='Description du produit'></textarea>
-            </div>
-            <div class='row'>
-                <div class="mb-3 col">
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Prix">
-                </div>
-                <select class="form-select col" aria-label="Default select example">
-                    <option value="1">Disponible</option>
-                    <option value="0">Indisponible</option>
-                </select>
+	<div class="container w-50">
+		<div class="mb-3">
+			<form action="" method='POST'>
+				<input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Nom du plat">
+			</div>
+			<div class="mb-3">
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder='Description du produit'></textarea>
+			</div>
+			<div class='row'>
+				<div class="mb-3 col">
+					<input type="text" class="form-control" id="exampleFormControlInput1" name="prix" placeholder="Prix">
+				</div>
+				<select class="form-select col" aria-label="Default select example" name="status">
+					<option value="1">Disponible</option>
+					<option value="0">Indisponible</option>
+				</select>
+				<select class="form-select col" aria-label="Default select example" name="type">
+					<option value="starter">Entrée</option>
+					<option value="main">Plat</option>
+					<option value="dessert">Dessert</option>
+					<option value="drink">Boisson</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label">
+					Illustration(s)
+				</label>
+				<input type="file" enctype="multipart/form-data" class="form-control" id="exampleFormControlInput1" name="image" placeholder="Uploader une image">
+				<div class="text-center"><input type="submit" class="btn btn-warning" value=" Ajouter la recette "></div>
+			</form>
+		</div>
 
-                   <select class="form-select col" aria-label="Default select example">
-                    <option value="starter">Entrée</option>
-                    <option value="main">Plat</option>
-                    <option value="dessert">Dessert</option>
-                    <option value="drink">Boisson</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">
-                    Illustration(s)
-                </label>
-                <input type="file" enctype="multipart/form-data" class="form-control" id="exampleFormControlInput1" placeholder="Uploader une image">
-            </div>
 
-            <div class="text-center"><input type="sumbit" class="btn btn-warning"  value=" Ajouter la recette "></div>
-        </div>
-    </section>
+	</div>
+</section>
