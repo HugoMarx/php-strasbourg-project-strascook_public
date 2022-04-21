@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `strascook` /*!40100 DEFAULT CHARACTER SET utf8 *
 USE `strascook`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: localhost    Database: strascook
+-- Host: 127.0.0.1    Database: strascook
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -141,6 +141,7 @@ CREATE TABLE `products` (
   `image` varchar(100) DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
   `product_type_id` int NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_products_product_type1_idx` (`product_type_id`),
   CONSTRAINT `fk_products_product_type1` FOREIGN KEY (`product_type_id`) REFERENCES `product_type` (`id`)
@@ -153,7 +154,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Tarte à la carotte et au cumin',15,NULL,1,1),(2,'Soupe de potimarron',10,NULL,1,1),(3,'Croquettes de riz aux petits pois',15,NULL,1,1),(4,'Maki de légumes',12,NULL,0,1),(5,'Tajine de légumes oubliés',22,NULL,1,2),(6,'Chili végétarien',25,NULL,1,2),(7,'Roti de tofu au sirop d\'érable',30,NULL,1,2),(8,'Pavlova mangue à la crême de coco',8,NULL,0,3),(9,'Crumble fraise rhubarbe et amandes',7,NULL,1,3);
+INSERT INTO `products` VALUES (1,'Tarte à la carotte et au cumin',15,NULL,1,1,NULL),(2,'Soupe de potimarron',10,NULL,1,1,NULL),(3,'Croquettes de riz aux petits pois',15,NULL,1,1,NULL),(4,'Maki de légumes',12,NULL,0,1,NULL),(5,'Tajine de légumes oubliés',22,NULL,1,2,NULL),(6,'Chili végétarien',25,NULL,1,2,NULL),(7,'Roti de tofu au sirop d\'érable',30,NULL,1,2,NULL),(8,'Pavlova mangue à la crême de coco',8,NULL,0,3,NULL),(9,'Crumble fraise rhubarbe et amandes',7,NULL,1,3,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-20 10:37:21
+-- Dump completed on 2022-04-21 12:37:02
