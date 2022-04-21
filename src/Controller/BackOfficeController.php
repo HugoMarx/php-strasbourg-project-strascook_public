@@ -8,7 +8,7 @@ class BackOfficeController extends AbstractController
 {
     public function dashboard(): string
     {
-        $productsManager = new BOItemManager;
+        $productsManager = new BOItemManager();
         $products = $productsManager->selectAll();
         return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products]);
     }
