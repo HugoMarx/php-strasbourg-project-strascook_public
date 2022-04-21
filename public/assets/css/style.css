@@ -1,0 +1,30 @@
+.logo-main {
+    display: block;
+    margin: 20px auto;
+}
+
+li a {
+    text-decoration: none;
+    line-height: 2rem;
+    text-align: center;
+    color: #444444;
+}
+li a:after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 1px;
+    width: 1px;
+    background: transparent;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+li a:hover:after {
+    width: 70%;
+    background: #444;
+}
+@media screen and (max-width: 950px) {
+    li a:hover:after {
+        width: 20%;
+        background: #444;
+    }
+}
