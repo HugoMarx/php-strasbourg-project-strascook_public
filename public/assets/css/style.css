@@ -28,3 +28,12 @@ li a:hover:after {
         background: #444;
     }
 }
+
+
+.card{
+    object-fit: fill;
+}
+
+.text-center{
+    padding: 30px;
+}
