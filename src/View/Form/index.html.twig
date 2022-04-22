@@ -1,0 +1,50 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+
+	<section class="get-in-touch">
+		<h1 class="title">Merci de bien vouloir remplir ce formulaire</h1>
+		<form class="contact-form row" method="POST" action="/form/new">
+			<div class="form-field col-lg-6">
+				<input class="input-text js-input" type="text" name="nom" required>
+				<label class="label" for="Nom">Nom</label>
+			</div>
+			<div class="form-field col-lg-6">
+				<input class="input-text js-input" type="text" name="prenom" required>
+				<label class="label" for="Prénom">Prénom</label>
+			</div>
+			<div class="form-field col-lg-6 ">
+				<input class="input-text js-input" type="text" name="adresse" required>
+				<label class="label" for="Adresse">Adresse</label>
+			</div>
+			<div class="form-field col-lg-6 ">
+				<input class="input-text js-input" type="text" name="postal" required>
+				<label class="label" for="Postal">Code Postal</label>
+			</div>
+			<div class="form-field col-lg-6 ">
+				<input class="input-text js-input" type="text" name="ville" required>
+				<label class="label" for="ville">Ville</label>
+			</div>
+			<div class="form-field col-lg-6 ">
+				<input class="input-text js-input" type="email" name="email" required>
+				<label class="label" for="email">E-mail</label>
+			</div>
+
+			<div class="form-field col-lg-6 ">
+				<input class="input-text js-input" type="text" name="telephone" required>
+				<label class="label" for="phone">Téléphone</label>
+			</div>
+
+			<div class="form-field col-lg-12">
+				<input class="input-text js-input" type="text" name="message" required>
+				<label class="label" for="message">Message</label>
+			</div>
+			<div class="form-field col-lg-12">
+				<input class="submit-btn" type="submit" value="Envoyer">
+
+			</div>
+		</form>
+	</section>
+
+{% endblock %}
