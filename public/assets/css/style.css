@@ -5,14 +5,15 @@
 
 li a {
     text-decoration: none;
-    line-height: 2rem;
+    line-height: 4rem;
     text-align: center;
     color: #444444;
+    font-size: 2rem;
 }
 li a:after {
     content: "";
     display: block;
-    margin: auto;
+    margin-bottom: 1px;
     height: 1px;
     width: 1px;
     background: transparent;
