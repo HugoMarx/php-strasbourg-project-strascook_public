@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `strascook` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `strascook`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: strascook
@@ -145,7 +143,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `fk_products_product_type1_idx` (`product_type_id`),
   CONSTRAINT `fk_products_product_type1` FOREIGN KEY (`product_type_id`) REFERENCES `product_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +152,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Tarte à la carotte et au cumin',15,NULL,1,1,NULL),(2,'Soupe de potimarron',10,NULL,1,1,NULL),(3,'Croquettes de riz aux petits pois',15,NULL,1,1,NULL),(4,'Maki de légumes',12,NULL,0,1,NULL),(5,'Tajine de légumes oubliés',22,NULL,1,2,NULL),(6,'Chili végétarien',25,NULL,1,2,NULL),(7,'Roti de tofu au sirop d\'érable',30,NULL,1,2,NULL),(8,'Pavlova mangue à la crême de coco',8,NULL,0,3,NULL),(9,'Crumble fraise rhubarbe et amandes',7,NULL,1,3,NULL);
+INSERT INTO `products` VALUES (1,'Tarte à la carotte et au cumin',15,'tartecarotte.jpg',1,1,'La pâte à tarte est faite avec de la farine de pois-chiche. Les carottes viennent de l\'Ilot de la Meinau pour du 100% local! On y ajoute du cumin et de la roquette fraîche!'),(2,'Soupe de potimarron',10,'veloute.jpeg',1,1,'La recette en toute simplicité, avec un bon lait de coco et un bouquet de coriandre du jardin! Le potimarron vient de l\'Ilot de la Meinau et quelques graines de courges grillées sont ajoutées! '),(3,'Croquettes de riz aux petits pois',15,'croquettes.jpg',1,1,'Une recette originale qui me vient de ma grand-mère! On utilise de la mozarella végétale (que l\'on trouve en magasin bio!). 5 pièces avec un hoummous maison!'),(4,'Maki de légumes',12,'maki.jpg',0,1,'L\'assiette de makis est composée de 6 pièces. A base de légumes de saison et de riz du japon, ils sont accompagnés de lamelles de gingembre frais et de wasabi. Une entrée toute en fraicheur et exotisme!'),(5,'Tajine de légumes oubliés',22,'tajine.jpg',1,2,'Des carottes, du panais, ou du topinambour, tout dépend de la saison mais ce sont des légumes anciens! Un peu de Ras El Hanout me venant de mon amie Marocaine et le tour est joué!'),(6,'Chili végétarien',25,'chilli.jpg',1,2,'Le secret du Chilli est dans ses épices! Les haricots rouges apportent une belle texture et le piment rouge ajoute le peps!'),(7,'Roti de tofu au sirop d\'érable',30,'rotitofu.jpg',1,2,'Qui dit rôti ne dit pas forcément porc! Ce plat original se démarque par la cuisson longue du tofu, caramélisée par le sirop d\'érable. Un vrai délice!'),(8,'Pavlova mangue à la crême de coco',8,'pavlova.jpg',0,3,'Un grand classique! Les fruits varient en fonction de la saison et la meringue et la crème ne contiennent que du lait végétal ainsi que de la crème de coco. '),(9,'Crumble fraise rhubarbe et amandes',7,'crumble.jpg',1,3,'Le crumble est aussi signé Mamie Kutuk donc top sercret! Une réussite à coup sûr en ce temps printanier!'),(10,'Pudding de chia framboise et cardamome',7,'pudding.jpg',1,3,'Le dessert sain et gourmand par excellence. Il se mange ultra frais et ravie les papilles !');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-21 12:37:02
+-- Dump completed on 2022-04-22 10:23:22

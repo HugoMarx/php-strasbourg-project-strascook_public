@@ -13,5 +13,9 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
+    'backoffice/dashboard' => ['BackOfficeController', 'dashboard'],
+    'backoffice/add' => ['BackOfficeController', 'add'],
     'items/menu' => ['MenuController', 'menu',],
+    'form' => ['FormController', 'index',],
+    'form/new' => ['FormController', 'new',],
 ];

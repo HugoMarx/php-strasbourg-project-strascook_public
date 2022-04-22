@@ -1,0 +1,34 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Admin - Ajouter une recette
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/back_office_style.css">{% endblock %}
+
+{% block content %}
+
+	<h1 class='text-center mt-5 fs-2 rounded-pill border border-4 p-4 my-5 w-50 m-auto shadow-sm '>Ajoutez un nouveau produit à votre carte 🥑</h1>
+
+        {% if error is defined %}
+		<div class="container text-center w-50  ">
+			<div class="alert alert-danger d-flex justify-content-center m-auto mt-5 flex-wrap " role="alert">
+
+                <h5>Veuillez renseigner les champs suivants : </h5>
+                <ul class='text-start'>
+                 {% for error_id in error %}
+                <li> {{ error_id }} </li>
+                {% endfor %}
+                </ul>
+			</div>
+		</div>
+    {% endif %}
+
+	{% include "Back_office/_formbase.html.twig" %}
+
+
+
+
+{% endblock %}
+
+{% block javascript %}{% endblock %}
