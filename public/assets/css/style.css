@@ -29,6 +29,14 @@ li a:hover:after {
     }
 }
 
+
+.card{
+    object-fit: fill;
+}
+
+.text-center{
+    padding: 30px;
+}
 .get-in-touch {
     max-width: 800px;
     margin: 50px auto;
