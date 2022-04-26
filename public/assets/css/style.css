@@ -144,3 +144,12 @@ li a:hover:after {
     padding: 5px;
      
  }
+
+ .instagram img{
+    text-align: left; 
+    font-weight: bolder;
+    font-style: italic;
+    padding: 5px;
+    max-width: 3rem;
+     
+ }
