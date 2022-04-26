@@ -104,8 +104,43 @@ li a:hover:after {
 
 .carousel-inner{
     margin:auto;
-    height: 100%;
-    width:75%;
+    height: 70%;
+    width:60%;
 }
 
+.presentation{
+    text-align: center;
+    margin:auto;
+    padding: 40px;
+    color: rgb(6, 111, 116);
+ 
+}
 
+.footer{
+  display: flex;
+  justify-content: space-between;
+  font-weight: bolder;
+  margin:auto;
+
+  
+}
+
+.footer  a {
+    color: #0D5E47;
+   }
+
+.copyright {
+    font-size:small;
+    color: #0D5E47;
+    text-align: center;
+    padding: 5px;
+    
+      }
+
+ .button-admin{
+    text-align: center; 
+    font-weight: bolder;
+    font-style: italic;
+    padding: 5px;
+     
+ }
