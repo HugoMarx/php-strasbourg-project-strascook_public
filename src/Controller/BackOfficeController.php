@@ -13,23 +13,17 @@ class BackOfficeController extends AbstractController
         return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products]);
     }
 
-    public function add()
+    public function add(): string
+    {
+        return $this->twig->render('Back_office/add_item.html.twig');
+    }
+
+    public function formCheck()
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $fieldError = [];
+            $fieldError = $this->fieldCheck();
             $fileError = $this->fileCheck();
-
-            foreach ($_POST as $key => $value) {
-                if (!$value) {
-                    $fieldError[] = $key;
-                }
-            }
-
-            if (!is_numeric($_POST['prix']) && !empty($_POST['prix'])) {
-                $fieldError[] = 'Le prix doit être un chiffre';
-            }
-
 
             if ($_FILES['images']['error'] === 0 && count($fieldError) === 0 && count($fileError) === 0) {
                 $file = uniqid() . $_FILES['images']['name'];
@@ -66,5 +60,27 @@ class BackOfficeController extends AbstractController
         }
 
         return $fileError;
+    }
+
+    private function fieldCheck()
+    {
+
+        $fieldError = [];
+
+        foreach ($_POST as $key => $value) {
+            if (!$value) {
+                $fieldError[] = $key;
+            }
+        }
+
+        if (!is_numeric($_POST['prix']) && !empty($_POST['prix'])) {
+            $fieldError[] = 'Le prix doit être un chiffre';
+        }
+
+        if (empty($_FILES['images']['name'])) {
+            $fieldError[] = 'Aucune illustration sélectionnée';
+        }
+
+        return $fieldError;
     }
 }
