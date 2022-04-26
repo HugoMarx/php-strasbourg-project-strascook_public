@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Model\BOItemManager;
+
 class BackOfficeController extends AbstractController
 {
     public function dashboard(): string
     {
-        return $this->twig->render('Back_office/dashboard.html.twig');
+        $productsManager = new BOItemManager();
+        $products = $productsManager->selectAll();
+        return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products]);
     }
 
     public function add()
@@ -23,7 +27,7 @@ class BackOfficeController extends AbstractController
             if (count($error) === 0) {
                 return $this->twig->render('Back_office/dashboard.html.twig');
             } else {
-                return  $this->twig->render('Back_office/add_item.html.twig',['error' => $error]);
+                return  $this->twig->render('Back_office/add_item.html.twig', ['error' => $error]);
             }
         } else {
             return $this->twig->render('Back_office/add_item.html.twig');
