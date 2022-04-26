@@ -100,3 +100,11 @@ li a:hover:after {
     width: 200px;
     cursor: pointer;
 }
+
+.carousel-inner{
+    margin:auto;
+    height: 100%;
+    width:75%;
+}
+
+

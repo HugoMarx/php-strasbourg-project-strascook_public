@@ -14,6 +14,6 @@ class MenuController extends AbstractController
         $productManager = new productManager();
         $products = $productManager->selectAll();
 
-        return $this->twig->render('Item/menu.html.twig', ['products' => $products]);
+        return $this->twig->render('Menu/menu.html.twig', ['products' => $products]);
     }
 }
