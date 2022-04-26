@@ -1,7 +1,7 @@
 <section class='my-5'>
 	<div class="container w-50">
 		<div class="mb-3">
-			<form action="" method='POST'>
+			<form action="" method='POST' enctype='multipart/form-data'>
 				<input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Nom du plat">
 			</div>
 			<div class="mb-3">
@@ -26,7 +26,7 @@
 				<label for="exampleFormControlInput1" class="form-label">
 					Illustration(s)
 				</label>
-				<input type="file" enctype="multipart/form-data" class="form-control" id="exampleFormControlInput1" name="image" placeholder="Uploader une image">
+				<input type="file" class="form-control" name="images" placeholder="Uploader une image">
 			<div class="text-center p-0"><input type="submit" class="btn btn-primaire mt-4" value=" Ajouter la recette "></div>
 			</form>
 			<div class="text-center p-0">
