@@ -17,20 +17,25 @@ class BackOfficeController extends AbstractController
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            var_dump($_POST);
             $error = [];
+
             foreach ($_POST as $key => $value) {
                 if (!$value) {
                     $error[] = $key;
                 }
             }
+
+            if (!is_float($_POST['prix'])) {
+                $error[] = 'Le prix doit être un chiffre';
+            }
+
             if (count($error) === 0) {
                 return $this->twig->render('Back_office/dashboard.html.twig');
             } else {
                 return  $this->twig->render('Back_office/add_item.html.twig', ['error' => $error]);
             }
-        } else {
-            return $this->twig->render('Back_office/add_item.html.twig');
         }
+
+        return $this->twig->render('Back_office/add_item.html.twig');
     }
 }
