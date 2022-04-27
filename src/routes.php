@@ -15,7 +15,6 @@ return [
     'items/delete' => ['ItemController', 'delete',],
     'backoffice/dashboard' => ['BackOfficeController', 'dashboard'],
     'backoffice/add' => ['BackOfficeController', 'add'],
-    'backoffice/add/formcheck' => ['BackOfficeController', 'formCheck'],
     'items/menu' => ['MenuController', 'menu',],
     'form' => ['FormController', 'index',],
     'form/new' => ['FormController', 'new',],

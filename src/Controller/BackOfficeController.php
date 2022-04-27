@@ -9,38 +9,48 @@ class BackOfficeController extends AbstractController
     public function dashboard(): string
     {
         $productsManager = new BOItemManager();
-        $products = $productsManager->selectAll();
+        $products = $productsManager->selectAllProducts();
         return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products]);
     }
 
+
     public function add(): string
     {
-        return $this->twig->render('Back_office/add_item.html.twig');
-    }
-
-    public function formCheck()
-    {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            // TODO validations (length, format...)
             $fieldError = $this->fieldCheck();
             $fileError = $this->fileCheck();
 
-            if ($_FILES['images']['error'] === 0 && count($fieldError) === 0 && count($fileError) === 0) {
+            if (/*$_FILES['images']['error'] === 0 && */count($fieldError) === 0 && count($fileError) === 0) {
+
                 $file = uniqid() . $_FILES['images']['name'];
                 $uploadDir = 'C:\Users\hugo_dev\Desktop\upload_test\\';
                 $uploadPath = $uploadDir . $file;
                 move_uploaded_file($_FILES['images']['tmp_name'], $uploadPath);
                 $fileIsValid = true;
+
+                // if validation is ok, insert and redirection
+
+                // clean $_POST data
+                $product = array_map('trim', $_POST);
+
+                $productsManager = new BOItemManager();
+                $productsManager->insertProduct($product);
+
                 return $this->twig->render('Back_office/add_item.html.twig', ['fileIsValid' => $fileIsValid]);
             } else {
+
                 return  $this->twig->render(
                     'Back_office/add_item.html.twig',
                     ['fieldError' => $fieldError, 'fileError' => $fileError]
                 );
             }
         }
+
         return $this->twig->render('Back_office/add_item.html.twig');
     }
+
 
     private function fileCheck(): array
     {
@@ -64,11 +74,10 @@ class BackOfficeController extends AbstractController
 
     private function fieldCheck()
     {
-
         $fieldError = [];
 
         foreach ($_POST as $key => $value) {
-            if (!$value) {
+            if ($value === '') {
                 $fieldError[] = $key;
             }
         }
@@ -77,9 +86,9 @@ class BackOfficeController extends AbstractController
             $fieldError[] = 'Le prix doit être un chiffre';
         }
 
-        if (empty($_FILES['images']['name'])) {
+        /* if (empty($_FILES['images']['name'])) {
             $fieldError[] = 'Aucune illustration sélectionnée';
-        }
+        }*/
 
         return $fieldError;
     }
