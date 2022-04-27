@@ -21,7 +21,9 @@ class BOItemManager extends AbstractManager
 
     public function insertProduct(array $item): void
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (name, price, status, product_type_id, description) VALUES (:name, :price, :status, :product_type_id, :description)");
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+        "(name, price, status, product_type_id, description)
+            VALUES (:name, :price, :status, :product_type_id, :description)");
         $statement->bindValue(':name', $item['name']);
         $statement->bindValue(':price', $item['prix']);
         //$statement->bindValue('image', $item['image']);
@@ -29,8 +31,5 @@ class BOItemManager extends AbstractManager
         $statement->bindValue(':product_type_id', $item['type']);
         $statement->bindValue(':description', $item['description']);
         $statement->execute();
-
-
-
     }
 }

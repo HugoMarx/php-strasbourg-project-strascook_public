@@ -13,17 +13,14 @@ class BackOfficeController extends AbstractController
         return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products]);
     }
 
-
     public function add(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             // TODO validations (length, format...)
             $fieldError = $this->fieldCheck();
             $fileError = $this->fileCheck();
 
             if (/*$_FILES['images']['error'] === 0 && */count($fieldError) === 0 && count($fileError) === 0) {
-
                 $file = uniqid() . $_FILES['images']['name'];
                 $uploadDir = 'C:\Users\hugo_dev\Desktop\upload_test\\';
                 $uploadPath = $uploadDir . $file;
@@ -40,7 +37,6 @@ class BackOfficeController extends AbstractController
 
                 return $this->twig->render('Back_office/add_item.html.twig', ['fileIsValid' => $fileIsValid]);
             } else {
-
                 return  $this->twig->render(
                     'Back_office/add_item.html.twig',
                     ['fieldError' => $fieldError, 'fileError' => $fileError]

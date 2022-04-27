@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<figure class="text-center">
+<h4>
+ Découvrez
+  <small class="text-muted">nos plats</small>
+</h4>
+</figure>
+
+<div class= "container">
+<div class="row row-cols-1 row-cols-md-3 g-4  ">
+{% for product in products %}
+
+        <div class="col">
+          <div class="card">
+            <img src="/assets/images/{{product.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.description}}</p>
+              <h6 class="price">{{product.price}}€</h6>
+              <a href="#" class="btn btn-success">Ajouter</a>
+                <button class="btn btn-primary" type="button"> - </button>
+                <button class="btn btn-primary" type="button"> + </button>
+            </div>
+          </div>
+        </div>
+    
+{% endfor %}
+
+  </div>
+</div>
+</div>
+
+
+{% endblock %}
+
+
