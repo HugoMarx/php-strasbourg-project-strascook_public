@@ -47,18 +47,15 @@ class BackOfficeController extends AbstractController
         return $this->twig->render('Back_office/add_item.html.twig');
     }
 
-
-    public function delete(){
-
+    public function delete()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = trim($_GET['id']);
-            $ProductManager = new BOItemManager();
-            $ProductManager->delete($id);
+            $productManager = new BOItemManager();
+            $productManager->delete($_GET['id']);
 
             header('Location: /backoffice/dashboard');
         }
     }
-
 
     private function fileCheck(): array
     {
