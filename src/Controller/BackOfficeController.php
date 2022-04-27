@@ -48,6 +48,18 @@ class BackOfficeController extends AbstractController
     }
 
 
+    public function delete(){
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $id = trim($_GET['id']);
+            $ProductManager = new BOItemManager();
+            $ProductManager->delete($id);
+
+            header('Location: /backoffice/dashboard');
+        }
+    }
+
+
     private function fileCheck(): array
     {
         $fileError = [];

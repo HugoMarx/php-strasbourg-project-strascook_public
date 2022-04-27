@@ -32,4 +32,13 @@ class BOItemManager extends AbstractManager
         $statement->bindValue(':description', $item['description']);
         $statement->execute();
     }
+
+
+    public function deleteProduct(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id);
+        $statement->execute();
+    }
 }
