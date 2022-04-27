@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{{dump(user)}}
+
 <figure class="text-center">
 <h4>
  Découvrez
@@ -20,7 +22,7 @@
               <h5 class="card-title">{{product.name}}</h5>
               <p class="card-text">{{product.description}}</p>
               <h6 class="price">{{product.price}}€</h6>
-              <a href="#" class="btn btn-success">Ajouter</a>
+              <a href="/menu/add?id={{product.id}}" class="btn btn-success">Ajouter</a>
                 <button class="btn btn-primary" type="button"> - </button>
                 <button class="btn btn-primary" type="button"> + </button>
             </div>

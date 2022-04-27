@@ -16,9 +16,11 @@ return [
     'backoffice/dashboard' => ['BackOfficeController', 'dashboard'],
     'backoffice/add' => ['BackOfficeController', 'add'],
     'menu' => ['MenuController', 'menu',],
+    'menu/add' => ['PanierController', 'addPanier',],
     'form' => ['FormController', 'index',],
     'form/new' => ['FormController', 'new',],
     'Home/index' => ['HomeController', 'index',],
+    'panier' => ['PanierController', 'index',],
 
 
 
