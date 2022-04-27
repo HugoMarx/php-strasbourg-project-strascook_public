@@ -36,7 +36,8 @@ class BOItemManager extends AbstractManager
     public function updateProduct(array $item): bool
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-            " SET name = :name, price = :price, status = :status, product_type_id = :product_type_id, description = :description
+            " SET name = :name, price = :price, status = :status,
+            product_type_id = :product_type_id, description = :description
         WHERE id= :id");
         $statement->bindValue('name', $item['name']);
         $statement->bindValue('price', $item['prix']);
