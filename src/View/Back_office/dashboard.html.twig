@@ -3,26 +3,29 @@
 {% block title %}Admin Strascook
 {% endblock %}
 
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/back_office_style.css">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/back_office_style.css">
+{% endblock %}
+
 
 {% block content %}
 
+
 	<div class="container">
-        <h1 class="fs-3 m-4 mb-5">Bienvenue sur votre espace administrateur</h1>
-    </div>
+		<h1 class="fs-3 m-4 mb-5">Bienvenue sur votre espace administrateur</h1>
+	</div>
 
 	<div class="container text-center ">
 		<section class="online mx-4 ">
-			<h3 class='pill rounded-pill border border-4 p-3 my-5 shadow-sm '>Actuellement sur le site</h3>
+			<h3 class='pill rounded-pill border border-4 p-3 my-5 shadow-sm '>Actuellement sur le site 🥙</h3>
 			<div class="row gap-5 justify-content-center">
 
 				{% for product in products %}
 
 					<div class="card mb-3 col-sm-6 col-md-12
-                    col-lg-5 shadow" style="max-width: 540px;">
+																		                    col-lg-5 shadow" style="max-width: 540px;">
 						<div class="row g-0 align-items-center">
 							<div class="col-md-4 ">
-								<img src="/assets/images/{{ product.image}}" class="img-fluid rounded-start default-pict" alt="default food picture">
+								<img src="{% if product.image is null %} https://cdn-icons.flaticon.com/png/512/2515/premium/2515263.png?token=exp=1651053766~hmac=132d70856695d2ef63f27bc3b62c6cc4 {% else %} /assets/images/{{ product.image}} {% endif %}" class="img-fluid rounded-start default-pict" alt="default food picture">
 							</div>
 							<div class="col-md-8">
 								<div class="card-body">
@@ -38,8 +41,8 @@
 										<small class="text-muted">Last updated 3 mins ago</small>
 									</p>
 
-									<button type="button" class="btn btn-primaire ">Modifier</button>
-									<button type="button" class="btn btn-suppr">Supprimer</button>
+									<a href="/backoffice/edit?id={{product.id}}"><button type="button" class="btn btn-primaire ">Modifier</button></a>
+									<a href="/backoffice/delete?id={{product.id}}"><button type="button" class="btn btn-suppr">Supprimer</button></a>
 								</div>
 							</div>
 						</div>
@@ -49,7 +52,9 @@
 			</div>
 			<div class="text-center">
 
-				<a href="/backoffice/add"><button type="button" class="btn btn-primary col-4 mt-4">Ajouter</button></a>
+				<a href="/backoffice/add">
+					<button type="button" class="btn btn-primary col-4 mt-4">Ajouter</button>
+				</a>
 			</div>
 
 
