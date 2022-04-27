@@ -6,7 +6,9 @@
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/back_office_style.css">
 {% endblock %}
 
+
 {% block content %}
+
 
 	<div class="container">
 		<h1 class="fs-3 m-4 mb-5">Bienvenue sur votre espace administrateur</h1>
@@ -39,7 +41,7 @@
 										<small class="text-muted">Last updated 3 mins ago</small>
 									</p>
 
-									<button type="button" class="btn btn-primaire ">Modifier</button>
+									<a href="/backoffice/edit?id={{product.id}}"><button type="button" class="btn btn-primaire ">Modifier</button></a>
 									<a href="/backoffice/delete?id={{product.id}}"><button type="button" class="btn btn-suppr">Supprimer</button></a>
 								</div>
 							</div>
