@@ -4,89 +4,89 @@
 {% endblock %}
 
 {% block content %}
-{{ dump(product) }}
 
-<section class='my-5'>
-	<div class="container w-50">
-
-    <h2>Image actuelle</h2>
-    <div class='text-center m-auto'><img src="/assets/images/{{product.image}}" alt="" width='300px' class='rounded-3'></div>
-		<div class="mb-3">
-
-        {% if fieldError is not empty %}
-		<div class="container text-center w-50 p-0  ">
-			<div class="alert alert-danger d-flex justify-content-center m-auto mt-5 flex-wrap " role="alert">
-
-				<h5>Veuillez renseigner les champs suivants :
-				</h5>
-				<ul class='text-start'>
-					{% for error_id in fieldError %}
-						<li>
-							{{ error_id }}
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
+	<section class='my-5'>
+		<div class="container">
+			<h3 class='text-center mt-5 fs-2 rounded-pill border border-4 p-4 my-5 w-50 m-auto shadow-sm '>Modifiez votre recette ici ! 🌶</h3>
 		</div>
-	{% endif %}
+		<div class="container w-50">
 
-	{% if fileError is not empty %}
-		<div class="container text-center w-50 p-0  ">
-			<div class="alert alert-danger d-flex justify-content-center m-auto mt-5 flex-wrap " role="alert">
-
-				<h5>Un problème de fichier est survenu :
-				</h5>
-				<ul class='text-start'>
-					{% for error_id in fileError %}
-						<li>
-							{{ error_id }}
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-		</div>
-	{% endif %}
-
-			<form action="" method='POST' enctype='multipart/form-data'>
-                <input name="id" type="hidden" value="{{product.id}}">
-				<input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Nom du plat" value='{{product.name}}'>
-			</div>
+			<div class='text-center m-auto'><img src="/assets/images/{{product.image}}" alt="" width='300px' class='rounded-3'></div>
 			<div class="mb-3">
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder='Description du produit'>{{product.description}}</textarea>
-			</div>
-			<div class='row gap-2 w-100 mx-auto align-items-start'>
-				<div class="mb-3 col mx-auto my-0 p-0 ">
-					<input type="text" class="form-control" id="exampleFormControlInput1" name="prix" placeholder="Prix" value='{{product.price}}'>
+
+				{% if fieldError is not empty %}
+					<div class="container text-center w-50 p-0  ">
+						<div class="alert alert-danger d-flex justify-content-center m-auto mt-5 flex-wrap " role="alert">
+
+							<h5>Veuillez renseigner les champs suivants :
+							</h5>
+							<ul class='text-start'>
+								{% for error_id in fieldError %}
+									<li>
+										{{ error_id }}
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				{% endif %}
+
+				{% if fileError is not empty %}
+					<div class="container text-center w-50 p-0  ">
+						<div class="alert alert-danger d-flex justify-content-center m-auto mt-5 flex-wrap " role="alert">
+
+							<h5>Un problème de fichier est survenu :
+							</h5>
+							<ul class='text-start'>
+								{% for error_id in fileError %}
+									<li>
+										{{ error_id }}
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				{% endif %}
+
+				<form action="" method='POST' enctype='multipart/form-data'>
+					<input name="id" type="hidden" value="{{product.id}}">
+					<input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Nom du plat" value='{{product.name}}'>
 				</div>
-				<select class="form-select col" aria-label="Default select example" name="status">
-					<option value="1">Disponible</option>
-					<option value="0"{% if product.status == 0 %} selected {% endif %}
-                    >Indisponible</option>
-				</select>
-				<select class="form-select col" aria-label="Default select example" name="type">
-					<option value="1" {% if product.product_type_id == 1 %} selected {% endif %}>Entrée</option>
-					<option value="2" {% if product.product_type_id == 2 %} selected {% endif %}>Plat</option>
-					<option value="3" {% if product.product_type_id == 3 %} selected {% endif %}>Dessert</option>
-					<option value="4" {% if product.product_type_id == 4 %} selected {% endif %}>Boisson</option>
-				</select>
+				<div class="mb-3">
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder='Description du produit'>{{product.description}}</textarea>
+				</div>
+				<div class='row gap-2 w-100 mx-auto align-items-start'>
+					<div class="mb-3 col mx-auto my-0 p-0 ">
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="prix" placeholder="Prix" value='{{product.price}}'>
+					</div>
+					<select class="form-select col" aria-label="Default select example" name="status">
+						<option value="1">Disponible</option>
+						<option value="0" {% if product.status == 0 %} selected {% endif %}>Indisponible</option>
+					</select>
+					<select class="form-select col" aria-label="Default select example" name="type">
+						<option value="1" {% if product.product_type_id == 1 %} selected {% endif %}>Entrée</option>
+						<option value="2" {% if product.product_type_id == 2 %} selected {% endif %}>Plat</option>
+						<option value="3" {% if product.product_type_id == 3 %} selected {% endif %}>Dessert</option>
+						<option value="4" {% if product.product_type_id == 4 %} selected {% endif %}>Boisson</option>
+					</select>
+				</div>
+				<div class="mb-3">
+					<label for="exampleFormControlInput1" class="form-label">
+						Illustration(s)
+					</label>
+					<input type="file" class="form-control" name="images" placeholder="Modifier l'image">
+					<div class="text-center p-0"><input type="submit" class="btn btn-primaire mt-4" value=" Modifier la recette "></div>
+				</form>
+				<div class="text-center p-0">
+					<a href="/backoffice/dashboard">
+						<button class="btn btn-suppr mt-2 px-4">Annuler</button>
+					</a>
+				</div>
 			</div>
-			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label">
-					Illustration(s)
-				</label>
-				<input type="file" class="form-control" name="images" placeholder="Modifier l'image">
-				<div class="text-center p-0"><input type="submit" class="btn btn-primaire mt-4" value=" Modifier la recette "></div>
-			</form>
-			<div class="text-center p-0">
-				<a href="/backoffice/dashboard">
-					<button class="btn btn-suppr mt-2 px-4">Annuler</button>
-				</a>
-			</div>
+
+
 		</div>
-
-
-	</div>
-</section>
+	</section>
 
 
 	{% if fileIsValid == true %}
@@ -108,4 +108,3 @@
 	{% endif %}
 
 {% endblock %}
-
