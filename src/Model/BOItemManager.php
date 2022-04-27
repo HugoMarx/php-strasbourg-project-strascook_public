@@ -22,7 +22,7 @@ class BOItemManager extends AbstractManager
     public function insertProduct(array $item): void
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-        "(name, price, status, product_type_id, description)
+            "(name, price, status, product_type_id, description)
             VALUES (:name, :price, :status, :product_type_id, :description)");
         $statement->bindValue(':name', $item['name']);
         $statement->bindValue(':price', $item['prix']);
@@ -31,6 +31,20 @@ class BOItemManager extends AbstractManager
         $statement->bindValue(':product_type_id', $item['type']);
         $statement->bindValue(':description', $item['description']);
         $statement->execute();
+    }
+
+    public function updateProduct(array $item): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+            " SET name = :name, price = :price, status = :status, product_type_id = :product_type_id, description = :description
+        WHERE id= :id");
+        $statement->bindValue('name', $item['name']);
+        $statement->bindValue('price', $item['prix']);
+        $statement->bindValue('status', $item['status']);
+        $statement->bindValue('product_type_id', $item['type']);
+        $statement->bindValue('description', $item['description']);
+        $statement->bindValue('id', $item['id']);
+        return $statement->execute();
     }
 
 
