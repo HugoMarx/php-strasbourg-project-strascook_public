@@ -10,7 +10,17 @@ class ReservationController extends AbstractController
     public function index(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $error = array_merge($this->PlaceCheck(), $this->dateCheck());
+            $error = [];
+            if (!empty($this->placeCheck()) && !empty($this->dateCheck())) {
+                $error = array_merge($this->placeCheck(), $this->dateCheck());
+            } else if (empty($this->placeCheck())) {
+                $error = $this->dateCheck();
+            } else if (empty($this->dateCheck())) {
+                $error = $this->placeCheck();
+            }
+            var_dump($error);
+
+
             if (empty($error)) {
                 header('Location: /menu');
             } else {
@@ -32,7 +42,7 @@ class ReservationController extends AbstractController
                 $_SESSION['home_number'] = $_POST['home_number'];
             } else {
                 $error['invalid_place'] =
-                ' Désolé, le chef ne se déplace par encore dans cette zone, veuillez entrer une adresse à Strasbourg 🚩';
+                    ' Désolé, le chef ne se déplace par encore dans cette zone, veuillez entrer une adresse à Strasbourg 🚩';
                 return $error;
             }
         }
@@ -50,7 +60,7 @@ class ReservationController extends AbstractController
             if ($_POST['date'] >= $limiteDate) {
                 $_SESSION['date'] = $_POST['date'];
             } else {
-                $error['invalid_date'] = 'Merci de choisir une date ultérieur';
+                $error['invalid_date'] = 'Merci de choisir une date ultérieure 📆';
                 return $error;
             }
         }
