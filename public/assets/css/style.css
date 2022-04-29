@@ -30,10 +30,13 @@ li a:hover:after {
     }
 }
 
-.card{
-    object-fit: fill;
+   
+.card-left{
+    display: inline-block;
+    width: 11rem;
+     
 }
-
+   
 .text-center{
     padding: 30px;
 }

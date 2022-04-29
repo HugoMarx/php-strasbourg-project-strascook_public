@@ -2,42 +2,43 @@
 
 {% block content %}
 
-{{dump(user)}}
+	<figure class="text-center">
+		<h4>
+			Découvrez
+			<small class="text-muted">nos plats</small>
+		</h4>
+	</figure>
 
-<figure class="text-center">
-<h4>
- Découvrez
-  <small class="text-muted">nos plats</small>
-</h4>
-</figure>
+	<div class="container">
+		<div class="row row-cols-1 row-cols-md-3 g-4  ">
 
-<div class= "container">
-<div class="row row-cols-1 row-cols-md-3 g-4  ">
-{% for product in products %}
-
-        <div class="col">
-          <div class="card">
-            <img src="/assets/images/{{images.name}}" class="card-img-top" alt="...">
-            <br>
-            <img src="/assets/images/{{images.name}}" width="50px" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{product.name}}</h5>
-              <p class="card-text">{{product.description}}</p>
-              <h6 class="price">{{product.price}}€</h6>
-              <a href="/menu/add?id={{product.id}}" class="btn btn-success">Ajouter</a>
-                <button class="btn btn-primary" type="button"> - </button>
-                <button class="btn btn-primary" type="button"> + </button>
-            </div>
-          </div>
-        </div>
-    
-{% endfor %}
-
-  </div>
-</div>
-</div>
-
-
-{% endblock %}
-
-
+			{% for product in products %}
+				<div class="col">
+					<div class="card">
+						{% for image in product.image %}
+							{% if image.couverture == 1  %}
+              
+								<img src="/assets/images/{{image.name}}" class="card-img-top" alt="...">
+							{% else %}
+              <br>
+								<img src="/assets/images/{{image.name}}" class="card-left" alt="...">
+              	{% endif %}
+						{% endfor %}
+						<div class="card-body">
+							<h5 class="card-title">{{product.name}}</h5>
+							<p class="card-text">{{product.description}}</p>
+							<h6 class="price">{{product.price}}€</h6>
+							<a href="/menu/add?id={{product.id}}" class="btn btn-success">Ajouter</a>
+							<button class="btn btn-primary" type="button">
+								-
+							</button>
+							<button class="btn btn-primary" type="button">
+								+
+							</button>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>{% endblock %}
