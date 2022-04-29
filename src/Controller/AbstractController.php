@@ -24,6 +24,8 @@ abstract class AbstractController
                 'debug' => (ENV === 'dev'),
             ]
         );
+
         $this->twig->addExtension(new DebugExtension());
+        $this->twig->addGlobal('user', $_SESSION);
     }
 }

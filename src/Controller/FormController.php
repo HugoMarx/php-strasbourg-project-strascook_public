@@ -23,7 +23,7 @@ class FormController extends AbstractController
                 $errors['adresse'] = "Veuillez remplir le champ adresse";
             }
             if (empty($_POST["postal"])) {
-                $errors['posal'] = "Veuillez remplir le champ Code Postal";
+                $errors['postal'] = "Veuillez remplir le champ Code Postal";
             }
 
             if (empty($_POST["email"])) {

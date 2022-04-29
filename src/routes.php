@@ -18,11 +18,14 @@ return [
     'backoffice/delete' => ['BackOfficeController', 'delete'],
     'backoffice/edit' => ['BackOfficeController', 'edit', ['id']],
     'menu' => ['MenuController', 'menu',],
+    'menu/add' => ['PanierController', 'addPanier',],
     'form' => ['FormController', 'index',],
     'form/new' => ['FormController', 'new',],
     'Home/index' => ['HomeController', 'index',],
     'login' => ['LoginController', 'index',],
     'login/check' => ['LoginController', 'loginCheck',],
+    'panier' => ['PanierController', 'index',],
+
 
 
 
