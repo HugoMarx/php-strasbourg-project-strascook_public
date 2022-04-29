@@ -9,19 +9,19 @@ class LoginController extends AbstractController
     /**
      * Display home page
      */
-    public function index(): string
+    public function index()
     {
         $message = (isset($_GET['message'])) ? $_GET['message'] : '';
-
-
-
-        return $this->twig->render(
-            'Login/index.html.twig',
-            [
-                'message' => $message,
-                'user' => $_SESSION['login'],
-            ]
-        );
+        if (isset($_SESSION['login'])) {
+            header('location:/admin');
+        } else {
+            return $this->twig->render(
+                'Login/index.html.twig',
+                [
+                    'message' => $message,
+                ]
+            );
+        }
     }
 
 
@@ -39,5 +39,12 @@ class LoginController extends AbstractController
             }
             header('location:/login?message=nop');
         }
+    }
+
+    public function logout()
+    {
+
+        unset($_SESSION['login']);
+        header('location: /');
     }
 }

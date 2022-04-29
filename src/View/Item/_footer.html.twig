@@ -28,9 +28,18 @@
 
 </footer>
 <div class="button-admin">
-	<a class="nav-link" href="/login">🔒 Admin
-		{{ user }}</a>
+
+	{% if user.login is null %}
+
+		<a class="nav-link " href="/login">🔒 Admin
+			{{ user.login }}</a>
+	{% else %}
+		<a class="nav-link " href="/login">🔒 Admin
+		</a>
+		<a type="button" class="btn btn-outline-dark mb-2" href="/logout">Se déconnecter</a>
+	{% endif %}
 </div>
+
 
 <div class="copyright">copyright © StrasCook 2022
 </div>
