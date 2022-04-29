@@ -43,6 +43,34 @@ INSERT INTO `customers` VALUES (1,'Suleyman','Kutuk','10 rue principale 67000 St
 UNLOCK TABLES;
 
 --
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `images` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) DEFAULT NULL,
+  `product_id` int DEFAULT NULL,
+  `couverture` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `product_id_idx` (`product_id`),
+  CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` VALUES (1,'tartecarotte.jpg',1,1),(2,'veloute.jpeg',2,1),(3,'croquettes.jpg',3,1),(4,'maki.jpg',4,1),(5,'tajine.jpg',5,1),(6,'chilli.jpg',6,1),(7,'rotitofu.jpg',7,1),(8,'pavlova.jpg',8,1),(9,'crumble.jpg',9,1),(10,'pudding.jpg',10,1),(11,'tartecarotte2.jpg',1,0),(12,'tartecarotte3.jpg',1,0),(13,'veloutepotimarron2.jpg',2,0),(14,'potimarrons.jpg',2,0),(15,'croquettes2.jpg',3,0),(16,'croquettes3.jpg',3,0),(17,'maki2.jpg',4,0),(18,'maki3.jpg',4,0),(19,'tajine2.jpg',5,0),(20,'tajine3.jpg',5,0),(21,'chilli2.jpg',6,0),(22,'chilli3.jpg',6,0),(23,'rotitofu2.jpg',7,0),(24,'rotitofu3.jpg',7,0),(25,'pavlova2.jpg',8,0),(26,'pavlova3.jpg',8,0),(27,'crumble2.jpg',9,0),(28,'crumble3.jpg',9,0),(29,'pudding2.jpg',10,0),(30,'pudding3.jpg',10,0);
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `order`
 --
 
@@ -136,7 +164,7 @@ CREATE TABLE `products` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `price` float DEFAULT NULL,
-  `image` varchar(100) DEFAULT NULL,
+  `product_image_id` varchar(100) DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
   `product_type_id` int NOT NULL,
   `description` varchar(500) DEFAULT NULL,
@@ -193,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-22 10:23:22
+-- Dump completed on 2022-04-29 15:29:37
