@@ -1,6 +1,11 @@
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
 .logo-main {
     display: block;
-    margin: 20px auto;
+    margin: auto;
+    max-width: 20rem;
 }
 
 li a {
@@ -30,14 +35,19 @@ li a:hover:after {
     }
 }
 
-   
-.card-left{
-    display: inline-block;
-    width: 11rem;
-     
+.card-img-top {
+    object-fit: fill;
 }
-   
-.text-center{
+
+.card-left{
+    width: 8rem;
+}
+
+.nav-link {
+    margin-right: 4rem;
+}
+
+.text-center {
     padding: 30px;
 }
 .get-in-touch {
@@ -104,54 +114,65 @@ li a:hover:after {
     cursor: pointer;
 }
 
-.carousel-inner{
-    margin:auto;
-    height: 70%;
-    width:60%;
+.pill {
+    width: 30%;
+    margin: auto;
+    padding: auto;
+    letter-spacing: 2px;
+}
+.btn.ac {
+    background-image: linear-gradient(125deg, #72a603, #c0d904);
+    color: white;
+    width: 10rem;
 }
 
-.presentation{
+.btn.col {
+    background-image: linear-gradient(125deg, #72a603, #c0d904);
+    color: white;
+}
+
+.carousel-inner {
+    margin: auto;
+    height: 70%;
+    width: 60%;
+}
+
+.presentation {
     text-align: center;
-    margin:auto;
+    margin: auto;
     padding: 40px;
     color: rgb(6, 111, 116);
- 
 }
 
-.footer{
-  display: flex;
-  justify-content: space-between;
-  font-weight: bolder;
-  margin:auto;
-
-  
+.footer {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bolder;
+    margin: auto;
 }
 
-.footer  a {
-    color: #0D5E47;
-   }
+.footer a {
+    color: #0d5e47;
+}
 
 .copyright {
-    font-size:small;
-    color: #0D5E47;
+    font-size: small;
+    color: #0d5e47;
     text-align: center;
     padding: 5px;
-    
-      }
+}
 
- .button-admin{
-    text-align: center; 
+.button-admin {
+    text-align: center;
     font-weight: bolder;
     font-style: italic;
     padding: 5px;
-     
- }
+}
 
- .instagram img{
-    text-align: left; 
+.instagram img {
+    text-align: left;
     font-weight: bolder;
     font-style: italic;
     padding: 5px;
     max-width: 3rem;
-     
- }
+}
