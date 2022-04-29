@@ -13,9 +13,9 @@ class ReservationController extends AbstractController
             $error = [];
             if (!empty($this->placeCheck()) && !empty($this->dateCheck())) {
                 $error = array_merge($this->placeCheck(), $this->dateCheck());
-            } else if (empty($this->placeCheck())) {
+            } elseif (empty($this->placeCheck())) {
                 $error = $this->dateCheck();
-            } else if (empty($this->dateCheck())) {
+            } elseif (empty($this->dateCheck())) {
                 $error = $this->placeCheck();
             }
             var_dump($error);
@@ -42,7 +42,8 @@ class ReservationController extends AbstractController
                 $_SESSION['home_number'] = $_POST['home_number'];
             } else {
                 $error['invalid_place'] =
-                    ' Désolé, le chef ne se déplace par encore dans cette zone, veuillez entrer une adresse à Strasbourg 🚩';
+                    ' Désolé, le chef ne se déplace par encore dans cette zone,
+                    veuillez entrer une adresse à Strasbourg 🚩';
                 return $error;
             }
         }
