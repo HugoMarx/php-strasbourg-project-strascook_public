@@ -11,34 +11,56 @@ class PanierController extends AbstractController
     {
         $productManager = new PanierManager();
 
-        $product = [];
-        foreach ($_SESSION['id'] as $item) {
-            $product[] = $productManager->selectProductById($item);
+        $products = [];
+        $priceSum = [];
+        $totalPrice = null;
+        $itemSum = array();
+        $totalItem = null;
+        if (isset($_SESSION['cart'])) {
+
+            foreach ($_SESSION['cart'] as $id => $item) {
+                $products[] = $productManager->selectProductById($item['item_id']);
+                array_push($priceSum, $products[$id]['price']);
+                array_push($itemSum ,$item['qte']);
+            }
+
+            $totalPrice = array_sum($priceSum);
+            $totalItem = array_sum($itemSum);
         }
-        return $this->twig->render('Panier/index.html.twig', ['product' => $product]);
+        var_dump($_SESSION);
+        var_dump($totalItem);
+        return $this->twig->render('Panier/index.html.twig', [
+            'products' => $products,
+            'total_price' => $totalPrice,
+            'total_item' => $totalItem
+        ]);
     }
 
     public function addPanier()
     {
-        $id = $_GET['id'];
-        if (isset($_SESSION['id'])) {
-            array_push($_SESSION['id'], $id);
-        }
+
+
+        $_SESSION['cart'][] = array('item_id' => $_GET['id'], 'qte' => 1);
 
         header('Location: /menu');
     }
 
+
+    public function empty()
+    {
+        unset($_SESSION['cart']);
+        header('Location: /panier');
+    }
+
     public function edit()
     {
-        $productManager = new ProductManager();
-        $products = $productManager->selectAll();
-        return $this->twig->render('Panier/edit.html.twig', ['products' => $products]);
+
+
+        return $this->twig->render('Panier/edit.html.twig');
     }
 
     public function delete()
     {
-        $productManager = new ProductManager();
-        $products = $productManager->selectAll();
 
         return $this->twig->render('Panier/delete.html.twig', ['products' => $products]);
     }
