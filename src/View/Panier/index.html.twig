@@ -1,30 +1,61 @@
 {% extends 'layout.html.twig' %}
 
-    
 {% block content %}
 
 
-<section class="products container">
-    <div class="row">
-        <h1>Mon panier</h1>
-      
-        {% for item in product %}
-      <table>
-         <tr>
-            <tr style="border-bottom:1px solid #CCCC; padding-bottom:5px">
-            <td style="width:200px;">
-                <h3>{{item.name}}</h3>
-            </td>
-            <td style="width:200px;">
-                <p>{{item.price}}€</p>
-            </td>
-            <td style="width:200px;">
-            </td>
-            </tr>
-        </table>
-        {% endfor %}
+	<section class="products container col-8">
+		<div class="row">
+			<h1>Mon panier</h1>
+			{% if products is empty %}
+				<h4 class='text-muted'>Votre panier est vide ...</h4>
+			{% endif %}
 
-    </div>
-</section>
+			{% if products is not empty %}
+				<section class='container'>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class='col-5'>Plat</th>
+								<th class='col-1 text-center'>Type</th>
+								<th class='col-1 text-center'>Qte</th>
+								<th class='col-1 text-center'></th>
+								<th class='col-1 text-end'>Prix</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for item in products %}
+								<tr>
+									<td>{{item.name}}</td>
+									<td class='text-center'>{{item.type}}</td>
+									<td>
+										<div class="d-flex justify-content-center">
+											<button type="button" class="btn btn-primary btn-sm py-0 m-1">-</button>
+											<button type="button" class="btn btn-primary btn-sm py-0 m-1">+</button>
+										</div>
+									</td>
+									<td class='text-center'>1</td>
+									<td class='text-end'>{{item.price}}€</td>
 
- {% endblock %}
+								</tr>
+							{% endfor %}
+						</tbody>
+						<tfoot>
+							<th></th>
+							<td></td>
+							<th colspan='0' class='text-center'>Total</th>
+							<td class='text-center'>{{total_item}}</td>
+							<td class='text-end'>{{total_price}}€</td>
+						</tfoot>
+
+					</table>
+				</section>
+
+				<div class="text-center">
+					<a href="panier/empty">
+						<button type="button" class="btn btn-primary">Vider le panier</button>
+					</a>
+				</div>
+			{% endif %}
+		</div>
+	</section>
+{% endblock %}
