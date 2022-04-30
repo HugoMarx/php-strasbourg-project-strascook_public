@@ -16,12 +16,12 @@ class PanierController extends AbstractController
         $totalPrice = null;
         $itemSum = array();
         $totalItem = null;
-        if (isset($_SESSION['cart'])) {
 
+        if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $id => $item) {
                 $products[] = $productManager->selectProductById($item['item_id']);
                 array_push($priceSum, $products[$id]['price']);
-                array_push($itemSum ,$item['qte']);
+                array_push($itemSum, $item['qte']);
             }
 
             $totalPrice = array_sum($priceSum);
@@ -61,7 +61,6 @@ class PanierController extends AbstractController
 
     public function delete()
     {
-
-        return $this->twig->render('Panier/delete.html.twig', ['products' => $products]);
+        return $this->twig->render('Panier/delete.html.twig');
     }
 }
