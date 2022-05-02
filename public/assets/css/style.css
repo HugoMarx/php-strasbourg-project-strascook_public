@@ -1,3 +1,20 @@
+:root {
+
+    /* Couleurs boutons */
+
+    --primary-btn : #C0D904;
+    --secondary-btn : #72A603;
+    --catchy-btn : #D93D4A;
+
+    /* Couleurs de contraste */
+
+    --dark : #181413;
+    --dark-green: #274001;
+    --dark-sand : #D98C4A;
+
+}
+
+
 .logo-main {
     display: block;
     margin: 20px auto;
