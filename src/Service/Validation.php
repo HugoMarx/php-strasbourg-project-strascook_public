@@ -4,7 +4,6 @@ namespace App\Service;
 
 class Validation
 {
-
     public function fileCheck(): array
     {
         $fileError = [];
