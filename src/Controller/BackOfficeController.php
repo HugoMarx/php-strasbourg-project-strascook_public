@@ -17,7 +17,6 @@ class BackOfficeController extends AbstractController
     public function add(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $validation = new Validation();
             // TODO validations (length, format...)
             $fieldError = $validation->fieldCheck();
@@ -62,7 +61,6 @@ class BackOfficeController extends AbstractController
         $product = $productsManager->selectOneById($id);
         // TODO validations (length, format...)
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $validation = new Validation();
             $fieldError = $validation->fieldCheck();
             $fileError = $validation->fileCheck();
