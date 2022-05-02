@@ -8,7 +8,6 @@ use App\Service\Validation;
 
 class ReservationController extends AbstractController
 {
-
     public function index(): string
     {
         $limiteDate = $this->getLimiteDate();
@@ -26,9 +25,13 @@ class ReservationController extends AbstractController
             }
 
             if (empty($error)) {
-
-                $_SESSION['user_details'] = array('reservation_date' => $_POST['date'], 'city' => $_POST['city'], 'street' => $_POST['street'], 'street_num' =>$_POST['home_number'], 'post_code' => $_POST['post_code']);
-
+                $_SESSION['user_details'] = array(
+                    'reservation_date' => $_POST['date'],
+                    'city' => $_POST['city'],
+                    'street' => $_POST['street'],
+                    'street_num' => $_POST['home_number'],
+                    'post_code' => $_POST['post_code']
+                );
                 header('Location: /menu');
             } else {
                 return $this->twig->render('/Reservation/date_place_check.html.twig', [
@@ -64,11 +67,10 @@ class ReservationController extends AbstractController
 
     public function dateCheck()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $limiteDate = $this->getLimiteDate();
             if ($_POST['date'] >= $limiteDate) {
-               return $error = [];
+                return $error = [];
             } else {
                 $error['invalid_date'] = 'Merci de choisir une date ultérieure 📆';
                 return $error;
