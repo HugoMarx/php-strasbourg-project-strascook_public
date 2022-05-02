@@ -1,11 +1,7 @@
 {% extends 'layout.html.twig' %}
 
-
 {% block content %}
-
-
 {{dump(user)}}
-
 	<div class="pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center ">
 		<h3 class='titre '>Découvrez nos plats</h3>
 	</div>
@@ -21,7 +17,11 @@
 							<h5 class="card-title">{{product.name}}</h5>
 							<p class="card-text">{{product.description}}</p>
 							<h6 class="price">{{product.price}}€</h6>
-							<a href="#" class="btn col  ">Ajouter</a>
+							<a href="/menu/add?id={{product.id}}">
+								<button class="btn col " type="button">
+									Ajouter
+								</button>
+							</a>
 							<button class="btn col" type="button">
 								-
 							</button>
@@ -36,5 +36,4 @@
 
 		</div>
 	</div>
-</div>
-{% endblock %}
+</div>{% endblock %}
