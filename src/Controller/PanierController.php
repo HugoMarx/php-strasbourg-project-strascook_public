@@ -20,6 +20,7 @@ class PanierController extends AbstractController
         if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $id => $item) {
                 $products[] = $productManager->selectProductById($item['item_id']);
+                $products[$id]['qte'] = $_SESSION['cart'][$id]['qte'];
                 array_push($priceSum, $products[$id]['price']);
                 array_push($itemSum, $item['qte']);
             }
@@ -27,8 +28,6 @@ class PanierController extends AbstractController
             $totalPrice = array_sum($priceSum);
             $totalItem = array_sum($itemSum);
         }
-        var_dump($_SESSION);
-        var_dump($totalItem);
         return $this->twig->render('Panier/index.html.twig', [
             'products' => $products,
             'total_price' => $totalPrice,
@@ -40,7 +39,7 @@ class PanierController extends AbstractController
     {
 
 
-        $_SESSION['cart'][] = array('item_id' => $_GET['id'], 'qte' => 1);
+        $_SESSION['cart'][] = array('item_id' => $_GET['id'], 'qte' => $_GET['qte']);
 
         header('Location: /menu');
     }

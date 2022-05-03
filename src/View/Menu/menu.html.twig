@@ -27,21 +27,18 @@
 
 							<div class="d-flex ">
 
-								<div class="input-group me-2 qte-selector justify-content-start">
+								<form action="/menu/add" method='GET'>
+									<input type="hidden" name='id' value='{{product.id}}'>
+									<div class="input-group me-2 qte-selector justify-content-start">
+										<span class="input-group-text del_item">-</span>
+										<input type="text" aria-label="Sizing example input" aria-describedby="item quantity" class='item_quantity' value='1' name='qte'>
+										<span class="input-group-text add_item">+</span>
+									</div>
 
-									<span class="input-group-text del_item">-</span>
+									<input class="btn col " type="submit" value='Ajouter'>
 
-									<input type="text" aria-label="Sizing example input" aria-describedby="item quantity" class='item_quantity'value='1'>
+								</form>
 
-									<span class="input-group-text add_item">+</span>
-
-								</div>
-
-								<a href="/menu/add?id={{product.id}}">
-									<button class="btn col " type="button">
-										Ajouter
-									</button>
-								</a>
 							</div>
 						</div>
 					</div>
@@ -51,7 +48,5 @@
 
 		</div>
 	</div>
-</div>{% endblock %}
-
-{% block javascript %} <script src="assets/JS/menu_script.js"></script>{% endblock %}
-
+</div>{% endblock %}{% block javascript %}
+<script src="assets/JS/menu_script.js"></script>{% endblock %}

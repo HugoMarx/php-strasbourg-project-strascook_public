@@ -2,6 +2,8 @@
 
 {% block content %}
 
+	{{dump(products)}}
+
 
 	<section class="products container col-8">
 		<div class="row">
@@ -33,7 +35,9 @@
 											<button type="button" class="btn btn-primary btn-sm py-0 m-1">+</button>
 										</div>
 									</td>
-									<td class='text-center'>1</td>
+									<td class='text-center'>
+										{{item.qte}}
+									</td>
 									<td class='text-end'>{{item.price}}€</td>
 
 								</tr>
