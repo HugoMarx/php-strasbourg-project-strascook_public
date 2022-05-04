@@ -1,3 +1,19 @@
+:root {
+
+    /* Couleurs boutons */
+
+    --primary-btn : #C0D904;
+    --secondary-btn : #72A603;
+    --catchy-btn : #D93D4A;
+
+    /* Couleurs de contraste */
+
+    --dark : #181413;
+    --dark-green: #274001;
+    --dark-sand : #D98C4A;
+
+}
+
 * {
     font-family: "Montserrat", sans-serif;
 }
@@ -33,6 +49,13 @@ li a:hover:after {
         width: 20%;
         background: #444;
     }
+    li a {
+        text-decoration: none;
+        line-height: 4rem;
+        text-align: center;
+        color: #444444;
+        font-size: 19px;
+    }
 }
 
 .card-img-top {
@@ -47,9 +70,6 @@ li a:hover:after {
     margin-right: 4rem;
 }
 
-.text-center {
-    padding: 30px;
-}
 .get-in-touch {
     max-width: 800px;
     margin: 50px auto;
@@ -115,10 +135,9 @@ li a:hover:after {
 }
 
 .pill {
-    width: 30%;
-    margin: auto;
-    padding: auto;
+    width: 20rem;
     letter-spacing: 2px;
+    margin: auto;
 }
 .btn.ac {
     background-image: linear-gradient(125deg, #72a603, #c0d904);
