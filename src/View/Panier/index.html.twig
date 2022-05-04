@@ -2,9 +2,6 @@
 
 {% block content %}
 
-{{dump(user)}}
-
-
 <section class="products container col-8">
 	<div class="row">
 		<h1>Mon panier</h1>
@@ -21,7 +18,8 @@
 							<th class='col-1 text-center'>Type</th>
 							<th class='col-1 text-center'>Qte</th>
 							<th class='col-1 text-center'></th>
-							<th class='col-1 text-end'>Prix</th>
+							<th class='col-1 text-end'>Prix Unitaire</th>
+                            <th class='col-1 text-end'>Prix Total</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -32,14 +30,15 @@
 								<td class='text-center'>{{item.type}}</td>
 								<td>
 									<div class="d-flex justify-content-center">
-										<button type="button" class="btn btn-primary btn-sm py-0 m-1">-</button>
-										<button type="button" class="btn btn-primary btn-sm py-0 m-1">+</button>
+										<a href="/panier/edit?to=del&id={{key}}"><button type="button" class="btn btn-primary btn-sm py-0 m-1">-</button></a>
+										<a href="/panier/edit?to=add&id={{key}}"><button type="button" class="btn btn-primary btn-sm py-0 m-1">+</button></a>
 									</div>
 								</td>
 								<td class='text-center'>
 									{{item.qte}}
 								</td>
 								<td class='text-end'>{{item.price}}€</td>
+                                <td class='text-end'>{{item.price * item.qte}}€</td>
 								<td class='text-end col-1'>
 									<a href="/panier/delete?id={{key}}">
 										<button type="button" class="btn btn-primary px-1 py-0">
@@ -62,7 +61,9 @@
 			<td></td>
 			<th colspan='0' class='text-center'>Total</th>
 			<td class='text-center'>{{total_item}}</td>
+            <td></td>
 			<td class='text-end'>{{total_price}}€</td>
+            <td></td>
 		</tfoot>
 
 	</table>

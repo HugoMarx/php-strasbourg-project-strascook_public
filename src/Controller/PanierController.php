@@ -16,7 +16,7 @@ class PanierController extends AbstractController
 
         if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $item) {
-                array_push($priceSum, $item['price']);
+                array_push($priceSum, $item['price']* $item['qte']);
                 array_push($itemSum, $item['qte']);
             }
             $totalPrice = array_sum($priceSum);
@@ -48,9 +48,18 @@ class PanierController extends AbstractController
 
     public function edit()
     {
+        if(isset($_SESSION['cart']))
+        if($_GET['to'] === 'add'){
+            $_SESSION['cart'][$_GET['id']]['qte']++;
+            header('Location: /panier');
+        }
 
+        if($_GET['to'] === 'del' && $_SESSION['cart'][$_GET['id']]['qte'] > 1 ){
+            $_SESSION['cart'][$_GET['id']]['qte']--;
+            header('Location: /panier');
+        }
 
-        return $this->twig->render('Panier/edit.html.twig');
+        header('Location: /panier');
     }
 
     public function delete()
