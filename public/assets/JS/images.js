@@ -8,3 +8,5 @@ thumbnail.forEach(function(thumb) {
       cover.setAttribute('src', e.target.src)
     });
   });
+
+  
