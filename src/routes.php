@@ -27,6 +27,7 @@ return [
     'login/check' => ['LoginController', 'loginCheck',],
     'panier' => ['PanierController', 'index',],
     'panier/delete' => ['PanierController', 'delete',],
+    'panier/edit' => ['PanierController', 'edit',],
     'panier/empty' => ['PanierController', 'empty',],
     'logout' => ['loginController', 'logout',],
 
