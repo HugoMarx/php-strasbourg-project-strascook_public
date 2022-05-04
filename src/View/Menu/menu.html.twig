@@ -1,14 +1,8 @@
+
 {% extends 'layout.html.twig' %}
 
-{% block title %}
-	Notre Carte
-{% endblock %}
-
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/menu_style.css">
-{% endblock %}
-
 {% block content %}
-	{{dump(user)}}
+{{dump(user)}}
 	<div class="pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center ">
 		<h3 class='titre '>Découvrez nos plats</h3>
 	</div>
@@ -24,22 +18,17 @@
 							<h5 class="card-title">{{product.name}}</h5>
 							<p class="card-text">{{product.description}}</p>
 							<h6 class="price">{{product.price}}€</h6>
-
-							<div class="d-flex ">
-
-								<form action="/menu/add" method='GET'>
-									<input type="hidden" name='id' value='{{product.id}}'>
-									<div class="input-group me-2 qte-selector justify-content-start">
-										<span class="input-group-text del_item">-</span>
-										<input type="text" aria-label="Sizing example input" aria-describedby="item quantity" class='item_quantity' value='1' name='qte'>
-										<span class="input-group-text add_item">+</span>
-									</div>
-
-									<input class="btn col " type="submit" value='Ajouter'>
-
-								</form>
-
-							</div>
+							<a href="/menu/add?id={{product.id}}">
+								<button class="btn col " type="button">
+									Ajouter
+								</button>
+							</a>
+							<button class="btn col" type="button">
+								-
+							</button>
+							<button class="btn col " type="button">
+								+
+							</button>
 						</div>
 					</div>
 				</div>
@@ -48,5 +37,6 @@
 
 		</div>
 	</div>
-</div>{% endblock %}{% block javascript %}
+</div>{% endblock %}
+{% block javascript %}
 <script src="assets/JS/menu_script.js"></script>{% endblock %}

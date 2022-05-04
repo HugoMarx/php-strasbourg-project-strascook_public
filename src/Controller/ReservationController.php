@@ -4,13 +4,18 @@ namespace App\Controller;
 
 use DateTime;
 use DateTimeZone;
+use App\Service\Validation;
 
 class ReservationController extends AbstractController
 {
     public function index(): string
     {
+        $limiteDate = $this->getLimiteDate();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $validation = new Validation();
             $error = [];
+            $emptyFieldError = $validation->fieldCheck();
             if (!empty($this->placeCheck()) && !empty($this->dateCheck())) {
                 $error = array_merge($this->placeCheck(), $this->dateCheck());
             } elseif (empty($this->placeCheck())) {
@@ -18,16 +23,27 @@ class ReservationController extends AbstractController
             } elseif (empty($this->dateCheck())) {
                 $error = $this->placeCheck();
             }
-            var_dump($error);
-
 
             if (empty($error)) {
+                $_SESSION['user_details'] = array(
+                    'reservation_date' => $_POST['date'],
+                    'city' => $_POST['city'],
+                    'street' => $_POST['street'],
+                    'street_num' => $_POST['home_number'],
+                    'post_code' => $_POST['post_code']
+                );
                 header('Location: /menu');
             } else {
-                return $this->twig->render('/Reservation/date_place_check.html.twig', ['error' => $error]);
+                return $this->twig->render('/Reservation/date_place_check.html.twig', [
+                    'error' => $error,
+                    'empty_fields' => $emptyFieldError,
+                    'limite_date' => $limiteDate
+                ]);
             }
         }
-        return $this->twig->render('/Reservation/date_place_check.html.twig');
+
+        var_dump($limiteDate);
+        return $this->twig->render('/Reservation/date_place_check.html.twig', ['limite_date' => $limiteDate]);
     }
 
     public function placeCheck(): ?array
@@ -37,9 +53,7 @@ class ReservationController extends AbstractController
             $error = [];
 
             if (in_array($_POST['post_code'], $validPostCode)) {
-                $_SESSION['street_name'] = $_POST['street'];
-                $_SESSION['city'] = $_POST['city'];
-                $_SESSION['home_number'] = $_POST['home_number'];
+                return $error = [];
             } else {
                 $error['invalid_place'] =
                     ' Désolé, le chef ne se déplace par encore dans cette zone,
@@ -53,13 +67,10 @@ class ReservationController extends AbstractController
 
     public function dateCheck()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
-            $limiteDate = $date->modify('+2 days')->format('Y-m-d');
-            $error = [];
+            $limiteDate = $this->getLimiteDate();
             if ($_POST['date'] >= $limiteDate) {
-                $_SESSION['date'] = $_POST['date'];
+                return $error = [];
             } else {
                 $error['invalid_date'] = 'Merci de choisir une date ultérieure 📆';
                 return $error;
@@ -67,5 +78,11 @@ class ReservationController extends AbstractController
         }
 
         return null;
+    }
+
+    private function getLimiteDate()
+    {
+        $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        return $date->modify('+3 days')->format('Y-m-d');
     }
 }

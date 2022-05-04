@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+{% block content  %}
+
+
+	<!-- Section: Design Block -->
+	<section class="text-center">
+		{% if message is not empty %}
+			<div class=" pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center   alert alert-danger " role="alert">
+				Champs Vide
+			</div>
+
+		{% endif %}
+
+		<div class="card mx-4 mx-md-5 shadow-5-strong">
+
+
+			<div class="card-body py-5 px-md-5">
+
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-8">
+						<h2 class="fw-bold mb-5">Administrateur StrasCook</h2>
+						<form
+							action="login/check" method="post">
+							<!-- 2 column grid layout with text inputs for the first and last names -->
+							<div class="row justify-content-center">
+								<div class="col-md-5 mb-1">
+									<div class="form-outline mb-4">
+										<input type="name" id="form3Example4" name="login" class="form-control" required/>
+										<label class="form-label" for="form3Example4" name="login">Name</label>
+									</div>
+								</div>
+
+
+								<div class="col-md-5 mb-1 ">
+									<div class="form-outline mb-4 ">
+										<input type="password" id="form3Example4" name="password" class="form-control" required/>
+										<label class="form-label" for="form3Example4" name="password">Mot de passe</label>
+									</div>
+								</div>
+							</div>
+
+
+							<!-- Submit button -->
+							<button type="submit" class="btn col btn-block mb-4">
+								Connexion
+							</button>
+
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>{% endblock %}

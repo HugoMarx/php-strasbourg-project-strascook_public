@@ -13,7 +13,7 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
-    'backoffice/dashboard' => ['BackOfficeController', 'dashboard'],
+    'admin' => ['AdminController', 'dashboard'],
     'backoffice/add' => ['BackOfficeController', 'add'],
     'backoffice/delete' => ['BackOfficeController', 'delete'],
     'backoffice/edit' => ['BackOfficeController', 'edit', ['id']],
@@ -23,9 +23,14 @@ return [
     'form/new' => ['FormController', 'new',],
     'Home/index' => ['HomeController', 'index',],
     'reservation' => ['ReservationController', 'index',],
+    'login' => ['LoginController', 'index',],
+    'login/check' => ['LoginController', 'loginCheck',],
     'panier' => ['PanierController', 'index',],
     'panier/delete' => ['PanierController', 'delete',],
     'panier/empty' => ['PanierController', 'empty',],
+    'logout' => ['loginController', 'logout',],
+
+
 
 
 

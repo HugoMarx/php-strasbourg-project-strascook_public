@@ -1,5 +1,6 @@
 {% extends "layout.html.twig" %}
 
+
 {% block title %}
 	📆 Confirmation date et lieu
 {% endblock %}
@@ -9,13 +10,15 @@
 {% endblock %}
 
 {% block content %}
+
 	<div class=" container border border-1 rounded-3 shadow mt-4 mb-5">
 		<div class="container mt-4 mb-0 text-center ">
 			<h2>Afin que nous puissions traiter votre demande,<br>
 				merci de renseigner la date souhaitée pour la reservation ainsi que votre adresse :</h2>
+
 		</div>
 
-		{% if error is not empty %}
+		{% if error is not empty and empty_fields is empty %}
 
 			<div class="alert alert-warning w-50 m-auto mb-5" role="alert">
 				<h4 class="alert-heading">Oups !</h4>
@@ -29,6 +32,7 @@
 			</div>
 
 		{% endif %}
+
 		<div class="container mt-2 mb-4">
 			<form action="" method='POST'>
 				<div>
@@ -36,7 +40,7 @@
 						<div class="col-4">
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="basic-addon1">Date</span>
-								<input type="date" class="form-control" placeholder="jj/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" name='date'>
+								<input type="date" class="form-control" placeholder="jj/mm/aaaa" aria-label="Username" aria-describedby="basic-addon1" name='date' min='{{limite_date}}'>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="basic-addon1">Rue</span>
@@ -50,15 +54,30 @@
 						<div class="col-3 d-flex flex-column justify-content-end">
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="basic-addon1">N°</span>
-								<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name='home number'>
+								<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name='home_number'>
 							</div>
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="basic-addon1">Code Postal</span>
-								<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name='post code'>
+								<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name='post_code'>
 							</div>
 						</div>
 					</div>
-					<div class="text-center"><input type="submit" class="btn btn-primary btn-lg" value='Confirmer'></div>
+
+					{% if empty_fields is not empty %}
+
+						<div class="alert alert-danger col-3 m-auto mb-0" role="alert">
+							<h4 class="alert-heading fs-6">Merci de renseigner le(s) champ(s) suivant(s) :</h4>
+							<hr>
+							<ul class='m-0'>
+								{% for error in empty_fields %}
+									<li class="mb-0">{{error}}</li>
+								{% endfor %}
+							</ul>
+
+						</div>
+
+					{% endif %}
+					<div class="text-center pt-3"><input type="submit" class="btn btn-primary btn-lg" value='Confirmer'></div>
 				</form>
 			</div>
 		</div>
