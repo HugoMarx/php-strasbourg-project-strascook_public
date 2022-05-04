@@ -58,9 +58,14 @@ li a:hover:after {
     }
 }
 
-.card {
+.card-img-top {
     object-fit: fill;
 }
+
+.card-left{
+    width: 8rem;
+}
+
 .nav-link {
     margin-right: 4rem;
 }
