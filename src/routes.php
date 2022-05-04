@@ -24,6 +24,7 @@ return [
     'Home/index' => ['HomeController', 'index',],
     'reservation' => ['ReservationController', 'index',],
     'panier' => ['PanierController', 'index',],
+    'panier/delete' => ['PanierController', 'delete',],
     'panier/empty' => ['PanierController', 'empty',],
 
 
