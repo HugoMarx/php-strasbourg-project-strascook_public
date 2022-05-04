@@ -14,6 +14,10 @@ class BackOfficeController extends AbstractController
         return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products]);
     }
 
+
+
+
+
     public function add(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
