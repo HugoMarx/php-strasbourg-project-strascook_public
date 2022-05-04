@@ -9,27 +9,20 @@ class PanierController extends AbstractController
 {
     public function index()
     {
-        $productManager = new PanierManager();
-
-        $products = [];
-        $priceSum = [];
-        $totalPrice = null;
+        $priceSum = array();
         $itemSum = array();
+        $totalPrice = null;
         $totalItem = null;
 
         if (isset($_SESSION['cart'])) {
-            foreach ($_SESSION['cart'] as $id => $item) {
-                $products[] = $productManager->selectProductById($item['item_id']);
-                $products[$id]['qte'] = $_SESSION['cart'][$id]['qte'];
-                array_push($priceSum, $products[$id]['price']);
+            foreach ($_SESSION['cart'] as $item) {
+                array_push($priceSum, $item['price']);
                 array_push($itemSum, $item['qte']);
             }
-
             $totalPrice = array_sum($priceSum);
             $totalItem = array_sum($itemSum);
         }
         return $this->twig->render('Panier/index.html.twig', [
-            'products' => $products,
             'total_price' => $totalPrice,
             'total_item' => $totalItem
         ]);
@@ -37,9 +30,11 @@ class PanierController extends AbstractController
 
     public function addPanier()
     {
+        $productManager = new PanierManager();
+        $cartProducts = $productManager->selectProductById($_GET['id']);
 
-
-        $_SESSION['cart'][] = array('item_id' => $_GET['id'], 'qte' => $_GET['qte']);
+        $cartProducts['qte'] = $_GET['qte'];
+        $_SESSION['cart'][] = $cartProducts;
 
         header('Location: /menu');
     }
@@ -60,6 +55,7 @@ class PanierController extends AbstractController
 
     public function delete()
     {
-        return $this->twig->render('Panier/delete.html.twig');
+        unset($_SESSION['cart'][$_GET['id']]);
+        header('Location: /panier');
     }
 }
