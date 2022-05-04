@@ -5,39 +5,50 @@
 
 	<section class="get-in-touch">
 		<h1 class="title">Merci de bien vouloir remplir ce formulaire</h1>
-		<form class="contact-form row" method="POST" action="/form/new">
+
+		{% if errors is defined %}
+			<div class=" pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center   alert alert-danger " role="alert">
+				Veuillez remplir tout les champs
+			</div>
+		{% endif %}
+		{% if message is defined and message is not empty  %}
+			<div class=" pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center   alert alert-success " role="alert">
+				Nous avons bien recu votre demande
+			</div>
+		{% endif %}
+		<form class="contact-form row" method="POST" action="/form">
 			<div class="form-field col-lg-6">
-				<input class="input-text js-input" type="text" name="nom" required>
+				<input class="input-text js-input" type="text" name="nom" value="{{ data.nom }}">
 				<label class="label" for="Nom">Nom</label>
 			</div>
 			<div class="form-field col-lg-6">
-				<input class="input-text js-input" type="text" name="prenom" required>
+				<input class="input-text js-input" type="text" name="prenom" value="{{ data.prenom }}">
 				<label class="label" for="Prénom">Prénom</label>
 			</div>
 			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="text" name="adresse" required>
+				<input class="input-text js-input" type="text" name="adresse" value="{{ data.adresse }}">
 				<label class="label" for="Adresse">Adresse</label>
 			</div>
 			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="text" name="postal" required>
+				<input class="input-text js-input" type="text" name="postal" value="{{ data.postal }}">
 				<label class="label" for="Postal">Code Postal</label>
 			</div>
 			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="text" name="ville" required>
+				<input class="input-text js-input" type="text" name="ville" value="{{ data.ville }}">
 				<label class="label" for="ville">Ville</label>
 			</div>
 			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="email" name="email" required>
+				<input class="input-text js-input" type="email" name="email" value="{{ data.email }}">
 				<label class="label" for="email">E-mail</label>
 			</div>
 
 			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="text" name="telephone" required>
+				<input class="input-text js-input" type="text" name="telephone" value="{{ data.telephone }}">
 				<label class="label" for="phone">Téléphone</label>
 			</div>
 
 			<div class="form-field col-lg-12">
-				<input class="input-text js-input" type="text" name="message" required>
+				<input class="input-text js-input" type="text" name="message" value="{{ data.message }}">
 				<label class="label" for="message">Message</label>
 			</div>
 			<div class="form-field col-lg-12">
