@@ -1,17 +1,15 @@
 :root {
-
     /* Couleurs boutons */
 
-    --primary-btn : #C0D904;
-    --secondary-btn : #72A603;
-    --catchy-btn : #D93D4A;
+    --primary-btn: #c0d904;
+    --secondary-btn: #72a603;
+    --catchy-btn: #d93d4a;
 
     /* Couleurs de contraste */
 
-    --dark : #181413;
+    --dark: #181413;
     --dark-green: #274001;
-    --dark-sand : #D98C4A;
-
+    --dark-sand: #d98c4a;
 }
 
 * {
@@ -170,6 +168,7 @@ li a:hover:after {
     justify-content: space-between;
     font-weight: bolder;
     margin: auto;
+    margin-bottom: 2rem;
 }
 
 .footer a {
@@ -196,4 +195,16 @@ li a:hover:after {
     font-style: italic;
     padding: 5px;
     max-width: 3rem;
+}
+
+.title-avis {
+    background-image: linear-gradient(125deg, #72a603, #c0d904);
+    color: white;
+    width: 20rem;
+    text-align: center;
+    margin: auto;
+}
+
+.trustpilot-widget {
+    margin: 3rem;
 }
