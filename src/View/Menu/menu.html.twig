@@ -14,12 +14,13 @@
 			
 		<div class="col-xs">
         <div class="container">
-			<div class="card">
+		<div class="card">
           
 				{% for image in product.image %}
 				{% if image.couverture == 1  %}
-              
-           	<img src="/assets/images/{{image.name}}" class="card-img-top"    alt="...">
+            
+           	<img src="/assets/images/{{image.name}}" class="card-img-top sv-cover"  alt="..."
+                  >
             {% endif %}
 			{% endfor %}
 						
@@ -27,7 +28,7 @@
           
 				{% for image in product.image %}
 				{% if image.couverture != 1  %}
-				<span><img src="/assets/images/{{image.name}}" class="img-thumbnail" width="100px" alt="..."></span>
+				<span><img src="/assets/images/{{image.name}}" class="img-thumbnail sv-thumbnail" width="100px" alt="..."></span>
               	{% endif %}
 				{% endfor %}
 			<div class="card-body">
@@ -40,28 +41,19 @@
     <div class="col">
 <a href="/menu/add?id={{product.id}}" class="btn col">Ajouter</a>
 					
-							<button class="btn col" type="button">
-								-
-							</button>
-							<button class="btn col " type="button">
-								+
-							</button
+<button class="btn col" type="button">
+	-
+</button>
+<button class="btn col " type="button">
+	+
+</button
     </div>
   </div>
   </div>
-						{#	<h6 class="price">{{product.price}}€</h6>
-							<a href="/menu/add?id={{product.id}}" class="btn col">Ajouter</a>
-					
-							<button class="btn col" type="button">
-								-
-							</button>
-							<button class="btn col " type="button">
-								+
-							</button>#}
-              </div>
-					</div>
-				</div>
-			{% endfor %}
+     </div>
+		</div>
+		</div>
+		{% endfor %}
 		</div>
 	</div>
 {% endblock %}
