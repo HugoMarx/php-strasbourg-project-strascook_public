@@ -8,6 +8,7 @@
     max-width: 20rem;
 }
 
+
 li a {
     text-decoration: none;
     line-height: 4rem;
@@ -38,6 +39,7 @@ li a:hover:after {
 .card-img-top {
     object-fit: fill;
 }
+
 
 .card-left{
     width: 8rem;

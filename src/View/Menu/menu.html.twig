@@ -3,8 +3,6 @@
 {% block content %}
 
 
-
-
 	<div class="pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center ">
 		<h3 class='titre '>Découvrez nos plats</h3>
 	</div>
@@ -14,25 +12,26 @@
     
     {% for product in products %}
 			
-				<div class="col">
+		<div class="col-xs">
         <div class="container">
-					<div class="card h-100">
+			<div class="card">
           
-						{% for image in product.image %}
-							{% if image.couverture == 1  %}
+				{% for image in product.image %}
+				{% if image.couverture == 1  %}
               
-           	<img src="/assets/images/{{image.name}}" class="card-img-top" alt="...">
-              	{% endif %}
-						{% endfor %}
-					<div class="card-body">
+           	<img src="/assets/images/{{image.name}}" class="card-img-top"    alt="...">
+            {% endif %}
+			{% endfor %}
+						
+			<div class="card-body">
           
-						{% for image in product.image %}
-							{% if image.couverture != 1  %}
-								<span><img src="/assets/images/{{image.name}}" class="img-thumbnail" width="50px" alt="..."></span>
+				{% for image in product.image %}
+				{% if image.couverture != 1  %}
+				<span><img src="/assets/images/{{image.name}}" class="img-thumbnail" width="100px" alt="..."></span>
               	{% endif %}
-						{% endfor %}
-<div class="card-body">
-							<p class="card-text">{{product.description}}</p></div>
+				{% endfor %}
+			<div class="card-body">
+			<p class="card-text">{{product.description}}</p></div>
               
   
     <div class="col ">
