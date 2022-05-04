@@ -22,8 +22,12 @@ return [
     'form' => ['FormController', 'index',],
     'form/new' => ['FormController', 'new',],
     'Home/index' => ['HomeController', 'index',],
+
+    'reservation' => ['ReservationController', 'index',],
+
     'login' => ['LoginController', 'index',],
     'login/check' => ['LoginController', 'loginCheck',],
+
     'panier' => ['PanierController', 'index',],
     'logout' => ['loginController', 'logout',],
 
