@@ -1,40 +1,59 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-{{dump(user)}}
 	<div class="pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center ">
 		<h3 class='titre '>Découvrez nos plats</h3>
 	</div>
 
 	<div class="container">
-		<div class="row row-cols-1 row-cols-md-3 g-4  ">
-			{% for product in products %}
-
-				<div class="col">
-					<div class="card">
-						<img src="/assets/images/{{product.image}}" class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">{{product.name}}</h5>
-							<p class="card-text">{{product.description}}</p>
-							<h6 class="price">{{product.price}}€</h6>
-							<a href="/menu/add?id={{product.id}}">
-								<button class="btn col " type="button">
-									Ajouter
-								</button>
-							</a>
-							<button class="btn col" type="button">
-								-
-							</button>
-							<button class="btn col " type="button">
-								+
-							</button>
-						</div>
-					</div>
-				</div>
-
+		<div class="row row-cols-1 row-cols-md-3 g-4 ">
+    
+    {% for product in products %}
+			
+		<div class="col-xs">
+        <div class="container">
+		<div class="card">
+          
+				{% for image in product.image %}
+				{% if image.couverture == 1  %}
+            
+           	<img src="/assets/images/{{image.name}}" class="card-img-top sv-cover"  alt="..."
+                  >
+            {% endif %}
 			{% endfor %}
-
+						
+			<div class="card-body">
+          
+				{% for image in product.image %}
+				{% if image.couverture != 1  %}
+				<span><img src="/assets/images/{{image.name}}" class="img-thumbnail sv-thumbnail" width="100px" alt="..."></span>
+              	{% endif %}
+				{% endfor %}
+			<div class="card-body">
+			<p class="card-text">{{product.description}}</p></div>
+              
+  
+    <div class="col ">
+      <h6 class="price ">{{product.price}}€</h6>
+    </div>
+    <div class="col">
+<a href="/menu/add?id={{product.id}}" class="btn col">Ajouter</a>
+					
+<button class="btn col" type="button">
+	-
+</button>
+<button class="btn col " type="button">
+	+
+</button
+    </div>
+  </div>
+  </div>
+     </div>
+		</div>
+		</div>
+		{% endfor %}
 		</div>
 	</div>
-</div>{% endblock %}
+</div>
+{% endblock %}
 
