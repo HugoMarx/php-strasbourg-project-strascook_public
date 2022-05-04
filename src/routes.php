@@ -20,7 +20,6 @@ return [
     'menu' => ['MenuController', 'menu',],
     'menu/add' => ['PanierController', 'addPanier',],
     'form' => ['FormController', 'index',],
-    'form/new' => ['FormController', 'new',],
     'Home/index' => ['HomeController', 'index',],
 
     'reservation' => ['ReservationController', 'index',],
