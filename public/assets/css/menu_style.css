@@ -1,0 +1,16 @@
+.qte-selector input {
+width: 30%;
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+.qte-selector span
+{
+
+    cursor: pointer;
+}
+
+.qte-selector span:hover{
+    background-color: yellowgreen;
+    color: white;
+}

@@ -21,13 +21,13 @@ return [
     'menu/add' => ['PanierController', 'addPanier',],
     'form' => ['FormController', 'index',],
     'Home/index' => ['HomeController', 'index',],
-
     'reservation' => ['ReservationController', 'index',],
-
     'login' => ['LoginController', 'index',],
     'login/check' => ['LoginController', 'loginCheck',],
-
     'panier' => ['PanierController', 'index',],
+    'panier/delete' => ['PanierController', 'delete',],
+    'panier/edit' => ['PanierController', 'edit',],
+    'panier/empty' => ['PanierController', 'empty',],
     'logout' => ['loginController', 'logout',],
 
 
