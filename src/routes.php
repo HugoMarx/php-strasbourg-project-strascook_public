@@ -28,6 +28,7 @@ return [
     'panier/delete' => ['PanierController', 'delete',],
     'panier/edit' => ['PanierController', 'edit',],
     'panier/empty' => ['PanierController', 'empty',],
+    'panier/validation' => ['PanierController', 'validation',],
     'logout' => ['loginController', 'logout',],
 
 

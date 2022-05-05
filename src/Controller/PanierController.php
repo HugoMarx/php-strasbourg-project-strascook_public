@@ -69,4 +69,8 @@ class PanierController extends AbstractController
         unset($_SESSION['cart'][$_GET['id']]);
         header('Location: /panier');
     }
+
+    public function validation(){
+        return $this->twig->render('Panier/validation.html.twig');
+    }
 }
