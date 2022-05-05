@@ -16,3 +16,24 @@ footer a {
     color: #0d5e47;
     text-align: center;
 }
+
+@media screen and (max-width: 425px){
+
+    footer a {
+        margin: 0 ;
+
+    }
+
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    ul a {
+        margin-bottom: 15px;
+    }
+
+
+}
