@@ -1,63 +1,68 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+	🍲 Notre Carte
+{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/menu_style.css">
+{% endblock %}
+
 {% block content %}
+
 	<div class="pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center ">
 		<h3 class='titre '>Découvrez nos plats</h3>
 	</div>
 
 	<div class="container">
 		<div class="row row-cols-1 row-cols-md-3 g-4 ">
-    
-    {% for product in products %}
-			
-		<div class="col-xs">
-        <div class="container">
-		<div class="card">
-          
-				{% for image in product.image %}
-				{% if image.couverture == 1  %}
-            
-           	<img src="/assets/images/{{image.name}}" class="card-img-top sv-cover"  alt="..."
-                  >
-            {% endif %}
+
+			{% for product in products %}
+
+				<div class="col-xs">
+					<div class="container">
+						<div class="card">
+
+							{% for image in product.image %}
+								{% if image.couverture == 1  %}
+
+									<img src="/assets/images/{{image.name}}" class="card-img-top sv-cover" alt="...">
+								{% endif %}
+							{% endfor %}
+
+							<div class="card-body">
+
+								{% for image in product.image %}
+									{% if image.couverture != 1  %}
+										<span><img src="/assets/images/{{image.name}}" class="img-thumbnail sv-thumbnail" width="100px" alt="..."></span>
+									{% endif %}
+								{% endfor %}
+								<div class="card-body">
+									<p class="card-text">{{product.description}}</p>
+								</div>
+
+								<div class="col ">
+									<h6 class="price ">{{product.price}}€</h6>
+								</div>
+
+								<form action="/menu/add" method='GET' class="d-flex flex-column">
+									<input type="hidden" name='id' value='{{product.reference}}'>
+									<div class="input-group me-2 qte-selector justify-content-center">
+										<span class="input-group-text del_item">-</span>
+										<input type="text" aria-label="Sizing example input" aria-describedby="item quantity" class='item_quantity' value='1' name='qte'>
+										<span class="input-group-text add_item">+</span>
+									</div>
+									<div class="text-center"><input class="btn col submit-custom mt-2" type="submit" value='Ajouter'></div>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
 			{% endfor %}
-						
-			<div class="card-body">
-          
-				{% for image in product.image %}
-				{% if image.couverture != 1  %}
-				<span><img src="/assets/images/{{image.name}}" class="img-thumbnail sv-thumbnail" width="100px" alt="..."></span>
-              	{% endif %}
-				{% endfor %}
-			<div class="card-body">
-			<p class="card-text">{{product.description}}</p></div>
-              
-  
-    <div class="col ">
-      <h6 class="price ">{{product.price}}€</h6>
-    </div>
-    <div class="col">
-<a href="/menu/add?id={{product.id}}" class="btn col">Ajouter</a>
-					
-<button class="btn col" type="button">
-	-
-</button>
-<button class="btn col " type="button">
-	+
-</button
-    </div>
-  </div>
-  </div>
-     </div>
-		</div>
-		</div>
-		{% endfor %}
 		</div>
 	</div>
-</div>
 {% endblock %}
 
 {% block javascript %}
-<script src="assets/JS/menu_script.js"></script>{% endblock %}
-
-
+	<script src="assets/JS/menu_script.js"></script>
+{% endblock %}
