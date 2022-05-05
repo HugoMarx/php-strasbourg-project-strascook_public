@@ -16,6 +16,8 @@
     font-family: "Montserrat", sans-serif;
 }
 
+
+
 .logo-main {
     display: block;
     margin: auto;
@@ -163,39 +165,6 @@ li a:hover:after {
     color: rgb(6, 111, 116);
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bolder;
-    margin: auto;
-    margin-bottom: 2rem;
-}
-
-.footer a {
-    color: #0d5e47;
-}
-
-.copyright {
-    font-size: small;
-    color: #0d5e47;
-    text-align: center;
-    padding: 5px;
-}
-
-.button-admin {
-    text-align: center;
-    font-weight: bolder;
-    font-style: italic;
-    padding: 5px;
-}
-
-.instagram img {
-    text-align: left;
-    font-weight: bolder;
-    font-style: italic;
-    padding: 5px;
-    max-width: 3rem;
-}
 
 .title-avis {
     background-image: linear-gradient(125deg, #72a603, #c0d904);
