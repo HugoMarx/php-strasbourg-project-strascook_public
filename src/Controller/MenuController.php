@@ -18,6 +18,7 @@ class MenuController extends AbstractController
         foreach ($productsBrut as $product) {
             $images = $productManager->selectAllImages($product['id']);
             $products[$product['id']] = [
+                'reference' => $product['id'],
                 'name' => $product['name'],
                 'price' => $product['price'],
                 'description' => $product['description'],
