@@ -25,6 +25,7 @@ return [
     'login' => ['LoginController', 'index',],
     'login/check' => ['LoginController', 'loginCheck',],
     'panier' => ['PanierController', 'index',],
+    'about' => ['AboutController', 'index',],
     'panier/delete' => ['PanierController', 'delete',],
     'panier/edit' => ['PanierController', 'edit',],
     'panier/empty' => ['PanierController', 'empty',],
