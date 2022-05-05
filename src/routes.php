@@ -23,6 +23,7 @@ return [
     'form/new' => ['FormController', 'new',],
     'Home/index' => ['HomeController', 'index',],
     'panier' => ['PanierController', 'index',],
+    'about' => ['AboutController', 'index',]
 
 
 
