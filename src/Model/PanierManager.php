@@ -20,7 +20,7 @@ class PanierManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("SELECT products.id, name, price,
-        status, type, image, description FROM " . static::TABLE . "
+        status, type, description FROM " . static::TABLE . "
         JOIN product_type ON product_type.id = products.product_type_id
         WHERE products.id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
