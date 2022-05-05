@@ -70,7 +70,8 @@ class PanierController extends AbstractController
         header('Location: /panier');
     }
 
-    public function validation(){
+    public function validation()
+    {
         return $this->twig->render('Panier/validation.html.twig');
     }
 }
