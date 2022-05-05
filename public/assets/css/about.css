@@ -7,26 +7,20 @@ img{
 }
 
 .card-text{
-    font-size: 25px;
+    font-size: 20px;
     margin: 70px;
    
 }
 
-.img-flour{
-    border-radius:90%;
-    float: right;
-    filter: drop-shadow(16px 16px 10px black);
-    width: 20%
-    
 
- }
 
  .contact{
     margin: 50px;
-    font-size: 25px;
+    font-size: 18px;
     font-weight: bold;
     color: #0066cc;
     text-align:center;
 
 }
+
 

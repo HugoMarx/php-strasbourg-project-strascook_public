@@ -1,8 +1,6 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
-
 	<div class="pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center ">
 		<h3 class='titre '>Découvrez nos plats</h3>
 	</div>
@@ -19,7 +17,7 @@
 				{% for image in product.image %}
 				{% if image.couverture == 1  %}
             
-           	<img src="/assets/images/{{image.name}}" class="card-img-top sv-cover" id="sv-cover" alt="..."
+           	<img src="/assets/images/{{image.name}}" class="card-img-top sv-cover"  alt="..."
                   >
             {% endif %}
 			{% endfor %}
@@ -56,4 +54,10 @@
 		{% endfor %}
 		</div>
 	</div>
+</div>
 {% endblock %}
+
+{% block javascript %}
+<script src="assets/JS/menu_script.js"></script>{% endblock %}
+
+

@@ -13,17 +13,25 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
-    'backoffice/dashboard' => ['BackOfficeController', 'dashboard'],
+    'admin' => ['AdminController', 'dashboard'],
     'backoffice/add' => ['BackOfficeController', 'add'],
     'backoffice/delete' => ['BackOfficeController', 'delete'],
     'backoffice/edit' => ['BackOfficeController', 'edit', ['id']],
     'menu' => ['MenuController', 'menu',],
     'menu/add' => ['PanierController', 'addPanier',],
     'form' => ['FormController', 'index',],
-    'form/new' => ['FormController', 'new',],
     'Home/index' => ['HomeController', 'index',],
+    'reservation' => ['ReservationController', 'index',],
+    'login' => ['LoginController', 'index',],
+    'login/check' => ['LoginController', 'loginCheck',],
     'panier' => ['PanierController', 'index',],
-    'about' => ['AboutController', 'index',]
+    'about' => ['AboutController', 'index',],
+    'panier/delete' => ['PanierController', 'delete',],
+    'panier/edit' => ['PanierController', 'edit',],
+    'panier/empty' => ['PanierController', 'empty',],
+    'logout' => ['loginController', 'logout',],
+
+
 
 
 

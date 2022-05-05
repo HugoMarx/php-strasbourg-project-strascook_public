@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\BOItemManager;
+use App\Service\Validation;
 
 class BackOfficeController extends AbstractController
 {
@@ -13,12 +14,17 @@ class BackOfficeController extends AbstractController
         return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products]);
     }
 
+
+
+
+
     public function add(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $validation = new Validation();
             // TODO validations (length, format...)
-            $fieldError = $this->fieldCheck();
-            $fileError = $this->fileCheck();
+            $fieldError = $validation->fieldCheck();
+            $fileError = $validation->fileCheck();
 
             if (/*$_FILES['images']['error'] === 0 && */count($fieldError) === 0 && count($fileError) === 0) {
                 $file = uniqid() . $_FILES['images']['name'];
@@ -59,8 +65,9 @@ class BackOfficeController extends AbstractController
         $product = $productsManager->selectOneById($id);
         // TODO validations (length, format...)
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $fieldError = $this->fieldCheck();
-            $fileError = $this->fileCheck();
+            $validation = new Validation();
+            $fieldError = $validation->fieldCheck();
+            $fileError = $validation->fileCheck();
 
             if (/*$_FILES['images']['error'] === 0 && */count($fieldError) === 0 && count($fileError) === 0) {
                 /*$file = uniqid() . $_FILES['images']['name'];
@@ -97,46 +104,5 @@ class BackOfficeController extends AbstractController
 
             header('Location: /backoffice/dashboard');
         }
-    }
-
-    private function fileCheck(): array
-    {
-        $fileError = [];
-        if (!empty($_FILES['images']['name'])) {
-            $valideExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'webp'];
-            $fileExtension = pathinfo($_FILES['images']['name'], PATHINFO_EXTENSION);
-            $maxFileSize = 2097152;
-
-            if ($_FILES['images']['size'] > $maxFileSize) {
-                $fileError[] = 'Le fichier ne peut dépasser 2MB';
-            }
-
-            if (!in_array($fileExtension, $valideExtensions)) {
-                $fileError[] =  'Cette extension de fichier n\'est pas prise en charge';
-            }
-        }
-
-        return $fileError;
-    }
-
-    private function fieldCheck()
-    {
-        $fieldError = [];
-
-        foreach ($_POST as $key => $value) {
-            if ($value === '') {
-                $fieldError[] = $key;
-            }
-        }
-
-        if (!is_numeric($_POST['prix']) && !empty($_POST['prix'])) {
-            $fieldError[] = 'Le prix doit être un chiffre';
-        }
-
-        /* if (empty($_FILES['images']['name'])) {
-            $fieldError[] = 'Aucune illustration sélectionnée';
-        }*/
-
-        return $fieldError;
     }
 }
