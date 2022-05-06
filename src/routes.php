@@ -30,6 +30,7 @@ return [
     'panier/edit' => ['PanierController', 'edit',],
     'panier/empty' => ['PanierController', 'empty',],
     'panier/validation' => ['PanierController', 'validation',],
+    'panier/order_recap' => ['PanierController', 'orderRecap',],
     'logout' => ['loginController', 'logout',],
 
 
