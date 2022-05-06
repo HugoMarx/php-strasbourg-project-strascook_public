@@ -25,7 +25,7 @@ class PanierController extends AbstractController
             foreach ($_SESSION['cart'] as $item) {
                 array_push($priceSum, $item['price'] * $item['qte']);
             }
-           return array_sum($priceSum);
+            return array_sum($priceSum);
         }
     }
 
@@ -36,7 +36,8 @@ class PanierController extends AbstractController
             foreach ($_SESSION['cart'] as $item) {
                 array_push($itemSum, $item['qte']);
             }
-           return array_sum($itemSum);;
+
+            return array_sum($itemSum);
         }
     }
 
@@ -91,10 +92,12 @@ class PanierController extends AbstractController
     {
         $totalPrice = $this->totalPrice();
         $totalItem = $this->totalItem();
-        return $this->twig->render('Panier/recap.html.twig',
-        [
-            'total_price' => $totalPrice,
-            'total_item' => $totalItem
-        ]);
+        return $this->twig->render(
+            'Panier/recap.html.twig',
+            [
+                'total_price' => $totalPrice,
+                'total_item' => $totalItem
+            ]
+        );
     }
 }

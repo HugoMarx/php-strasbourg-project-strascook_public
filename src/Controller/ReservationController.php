@@ -16,11 +16,12 @@ class ReservationController extends AbstractController
             $validation = new Validation();
             $error = [];
             $emptyFieldError = $validation->fieldCheck();
+
             if (!empty($this->placeCheck()) && !empty($this->dateCheck())) {
                 $error = array_merge($this->placeCheck(), $this->dateCheck());
             } elseif (empty($this->placeCheck())) {
                 $error = $this->dateCheck();
-            } elseif (empty($this->dateCheck())) {
+            } else {
                 $error = $this->placeCheck();
             }
 
@@ -40,9 +41,7 @@ class ReservationController extends AbstractController
                 } else {
                     header('Location: /menu');
                 }
-            }
-
-            if (!empty($error)) {
+            } else {
                 return $this->twig->render('/Reservation/date_place_check.html.twig', [
                     'error' => $error,
                     'empty_fields' => $emptyFieldError,
