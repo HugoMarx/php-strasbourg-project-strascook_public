@@ -32,5 +32,6 @@ return [
     'panier/contact' => ['PanierController', 'contactForm',],
     'panier/validation' => ['PanierController', 'validation',],
     'panier/order_recap' => ['PanierController', 'orderRecap',],
+    'panier/confirmation' => ['PanierController', 'orderConfirmation',],
     'logout' => ['loginController', 'logout',],
 ];
