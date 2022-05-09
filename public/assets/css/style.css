@@ -143,6 +143,12 @@ li a:hover:after {
     cursor: pointer;
 }
 
+.messagereservation {
+    color: #d93d4a;
+
+    margin: 2rem;
+}
+
 .pill {
     width: 20rem;
     letter-spacing: 2px;

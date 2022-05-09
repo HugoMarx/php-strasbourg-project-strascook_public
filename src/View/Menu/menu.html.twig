@@ -22,12 +22,6 @@
 	{% endif %}
 
 
-	{#	{% if not user.subscribed %}
-				<div class=" pill rounded-pill border border-2 p-3 my-5 shadow-sm text-center   alert alert-danger " role="alert">
-					Vous devez d'abord remplir les conditions pour compléter le panier.
-				</div>
-			{% endif %}  #}
-
 	<div class="container">
 		<div class="row row-cols-1 row-cols-md-3 g-4 ">
 
@@ -58,17 +52,23 @@
 								<div class="col ">
 									<h6 class="price ">{{product.price}}€</h6>
 								</div>
-
-								<form action="/menu/add" method='GET' class="d-flex flex-column">
-									<input type="hidden" name='id' value='{{product.reference}}'>
-									<div class="input-group me-2 qte-selector justify-content-center">
-										<span class="input-group-text del_item">-</span>
-										<input type="text" aria-label="Sizing example input" aria-describedby="item quantity" class='item_quantity' value='1' name='qte'>
-										<span class="input-group-text add_item">+</span>
+								{% if user.user_details %}
+									<form action="/menu/add" method='GET' class="d-flex flex-column">
+										<input type="hidden" name='id' value='{{product.reference}}'>
+										<div class="input-group me-2 qte-selector justify-content-center">
+											<span class="input-group-text del_item">-</span>
+											<input type="text" aria-label="Sizing example input" aria-describedby="item quantity" class='item_quantity' value='1' name='qte'>
+											<span class="input-group-text add_item">+</span>
+										</div>
+										<div class="text-center"><input class="btn col submit-custom mt-2" type="submit" value='Ajouter'></div>
+									</form>
+								{% else %}
+									<div class="messagereservation" role="alert">
+										Remplissez d'abord les conditions de reservation pour ajouter au panier
 									</div>
-									<div class="text-center"><input class="btn col submit-custom mt-2" type="submit" value='Ajouter'></div>
-								</form>
 
+									<a class="btn col  " href="/reservation">Reserver</a>
+								{% endif %}
 							</div>
 						</div>
 					</div>
