@@ -32,7 +32,7 @@ class ReservationController extends AbstractController
                     'street_num' => $_POST['home_number'],
                     'post_code' => $_POST['post_code']
                 );
-                header('Location: /menu');
+                header('Location: /menu?message=ok');
             } else {
                 return $this->twig->render('/Reservation/date_place_check.html.twig', [
                     'error' => $error,
@@ -42,7 +42,7 @@ class ReservationController extends AbstractController
             }
         }
 
-        var_dump($limiteDate);
+
         return $this->twig->render('/Reservation/date_place_check.html.twig', ['limite_date' => $limiteDate]);
     }
 

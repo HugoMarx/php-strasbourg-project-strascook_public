@@ -9,9 +9,24 @@
 
 {% block content %}
 
+
 	<div class="pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center ">
 		<h3 class='titre '>Découvrez nos plats</h3>
 	</div>
+
+
+	{% if message is defined and message is not empty  %}
+		<div class=" pill rounded-pill border border-2 p-3 my-5 shadow-sm text-center   alert alert-success " role="alert">
+			Vos coordonnées sont corrects vous pouvez maintenant ajouter au panier.
+		</div>
+	{% endif %}
+
+
+	{#	{% if not user.subscribed %}
+				<div class=" pill rounded-pill border border-2 p-3 my-5 shadow-sm text-center   alert alert-danger " role="alert">
+					Vous devez d'abord remplir les conditions pour compléter le panier.
+				</div>
+			{% endif %}  #}
 
 	<div class="container">
 		<div class="row row-cols-1 row-cols-md-3 g-4 ">

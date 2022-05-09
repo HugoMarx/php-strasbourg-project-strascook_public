@@ -23,9 +23,10 @@ class MenuController extends AbstractController
                 'price' => $product['price'],
                 'description' => $product['description'],
                 'image' => $images,
-                ];
+            ];
         }
+        $message = (isset($_GET['message'])) ? $_GET['message'] : '';
 
-        return $this->twig->render('Menu/menu.html.twig', ['products' => $products]);
+        return $this->twig->render('Menu/menu.html.twig', ['products' => $products, 'message' => $message]);
     }
 }

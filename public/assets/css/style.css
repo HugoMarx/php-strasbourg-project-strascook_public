@@ -16,14 +16,11 @@
     font-family: "Montserrat", sans-serif;
 }
 
-
-
 .logo-main {
     display: block;
     margin: auto;
     max-width: 20rem;
 }
-
 
 li a {
     text-decoration: none;
@@ -50,6 +47,7 @@ li a:hover:after {
         width: 20%;
         background: #444;
     }
+
     li a {
         text-decoration: none;
         line-height: 4rem;
@@ -59,12 +57,21 @@ li a:hover:after {
     }
 }
 
+@media screen and (max-width: 1411px) and (min-width: 990px) {
+    li a {
+        text-decoration: none;
+        line-height: 2rem;
+        text-align: center;
+        color: #444444;
+        font-size: 17px;
+    }
+}
+
 .card-img-top {
     object-fit: fill;
 }
 
-
-.card-left{
+.card-left {
     width: 8rem;
 }
 
@@ -164,7 +171,6 @@ li a:hover:after {
     padding: 40px;
     color: rgb(6, 111, 116);
 }
-
 
 .title-avis {
     background-image: linear-gradient(125deg, #72a603, #c0d904);
