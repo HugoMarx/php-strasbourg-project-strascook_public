@@ -126,14 +126,6 @@ class PanierController extends AbstractController
     {
         $panierManager = new PanierManager();
         $panierManager->insertOrder($_SESSION);
-
-        $userId = $panierManager->selectCustomerById($_SESSION);
-        var_dump($userId);
-
-        if (!$panierManager->insertOrder($_SESSION)) {
-            return 'Request Failed';
-        }
-
         return $this->twig->render('Panier/order_confirmation.html.twig');
     }
 }

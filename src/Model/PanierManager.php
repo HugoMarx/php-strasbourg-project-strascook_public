@@ -29,28 +29,18 @@ class PanierManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function selectCustomerById(array $user): array|false
+
+    public function getLastInsertId()
     {
-        // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM customers
-        WHERE customers.lastname = :lastname AND customers.firstname = :firstname");
-        $statement->bindValue('lastname', $user['user_details']['lastname']);
-        $statement->bindValue('firstname', $user['user_details']['firstname']);
-        $statement->execute();
-
-        return $statement->fetch();
+        return $this->pdo->lastInsertId();
     }
-
-
 
 
     public function insertOrder(array $order)
     {
         $userAddress = $order['user_details']['street_num'] . ' '
-        . $order['user_details']['street'] . ' ' . $order['user_details']['post_code']
-        . ' ' . $order['user_details']['city'];
-
-       //$userId = $this->selectCustomerById($order);
+            . $order['user_details']['street'] . ' ' . $order['user_details']['post_code']
+            . ' ' . $order['user_details']['city'];
 
         $statement = $this->pdo->prepare("INSERT INTO customers (firstname, lastname, adress, email, number) VALUES
         (:firstname, :lastname, :adress, :email, :number)");
@@ -61,18 +51,22 @@ class PanierManager extends AbstractManager
         $statement->bindValue('number', $order['user_details']['number']);
         $statement->execute();
 
-        /*$statement = $this->pdo->prepare("INSERT INTO order (customer_id) VALUES
-        (:customer_id)");
-        $statement->bindValue('customer_id', $user_id['id']);
-        $statement->execute();*/
+        $customerId = $this->getLastInsertId();
 
-        /*foreach ($order['cart'] as $product) {
-            $statement = $this->pdo->prepare("INSERT INTO order_details (product_id, product_amount, order_id) VALUES
-            (:product_id, :product_amount, :order_id)");
-            $statement->bindValue('product_id', $product['id']);
+        $statementOrder = $this->pdo->prepare("INSERT INTO user_order (customer_id, status)
+        VALUES (:customer_id, true)");
+        $statementOrder->bindValue('customer_id', $customerId);
+        $statementOrder->execute();
+
+        $orderId = $this->getLastInsertId();
+
+        foreach ($order['cart'] as $product) {
+            $statement = $this->pdo->prepare("INSERT INTO order_details (products_id, product_amount, order_id) VALUES
+             (:products_id, :product_amount, :order_id)");
+            $statement->bindValue('products_id', $product['id']);
             $statement->bindValue('product_amount', $product['qte']);
-            $statement->bindValue('order_id', $user_adress);
-            return $statement->execute();
-        }*/
+            $statement->bindValue('order_id', $orderId);
+            $statement->execute();
+        }
     }
 }
