@@ -120,4 +120,20 @@ class PanierController extends AbstractController
                 'total_item' => $totalItem            ]
         );
     }
+
+    public function orderConfirmation(){
+
+        $PanierManager = new PanierManager;
+        $PanierManager->insertOrder($_SESSION);
+
+        $user_id = $PanierManager->selectCustomerById($_SESSION);
+        var_dump($user_id);
+
+        if( !$PanierManager->insertOrder($_SESSION)){
+            return 'Request Failed';
+        }
+
+        return $this->twig->render('Panier/order_confirmation.html.twig');
+    }
+
 }
