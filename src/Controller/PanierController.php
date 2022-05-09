@@ -85,7 +85,6 @@ class PanierController extends AbstractController
                 $_SESSION['user_details']['email'] = $_POST['email'];
                 $_SESSION['user_details']['number'] = $_POST['number'];
                 header('Location: /panier/order_recap');
-                
             } else {
                 return $this->twig->render('/Reservation/contact_form.html.twig', ['field_error' => $emptyFieldError]);
             }
