@@ -10,23 +10,36 @@ class PanierController extends AbstractController
 {
     public function index()
     {
-        $priceSum = array();
-        $itemSum = array();
-        $totalPrice = null;
-        $totalItem = null;
+        $totalPrice = $this->totalPrice();
+        $totalItem = $this->totalItem();
 
-        if (isset($_SESSION['cart'])) {
-            foreach ($_SESSION['cart'] as $item) {
-                array_push($priceSum, $item['price'] * $item['qte']);
-                array_push($itemSum, $item['qte']);
-            }
-            $totalPrice = array_sum($priceSum);
-            $totalItem = array_sum($itemSum);
-        }
         return $this->twig->render('Panier/index.html.twig', [
             'total_price' => $totalPrice,
             'total_item' => $totalItem
         ]);
+    }
+
+    private function totalPrice()
+    {
+        $priceSum = array();
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $item) {
+                array_push($priceSum, $item['price'] * $item['qte']);
+            }
+            return array_sum($priceSum);
+        }
+    }
+
+    private function totalItem()
+    {
+        $itemSum = array();
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $item) {
+                array_push($itemSum, $item['qte']);
+            }
+
+            return array_sum($itemSum);
+        }
     }
 
     public function addPanier()
@@ -89,7 +102,24 @@ class PanierController extends AbstractController
                 return $this->twig->render('/Reservation/contact_form.html.twig', ['field_error' => $emptyFieldError]);
             }
         }
-
         return $this->twig->render('/Reservation/contact_form.html.twig');
+    }
+
+    public function validation()
+    {
+        return $this->twig->render('Panier/validation.html.twig');
+    }
+
+    public function orderRecap()
+    {
+        $totalPrice = $this->totalPrice();
+        $totalItem = $this->totalItem();
+        return $this->twig->render(
+            'Panier/recap.html.twig',
+            [
+                'total_price' => $totalPrice,
+                'total_item' => $totalItem
+            ]
+        );
     }
 }
