@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\PanierManager;
 use App\Model\ProductManager;
+use App\Service\Validation;
 
 class PanierController extends AbstractController
 {
@@ -68,5 +69,28 @@ class PanierController extends AbstractController
     {
         unset($_SESSION['cart'][$_GET['id']]);
         header('Location: /panier');
+    }
+
+
+    public function contactForm()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $validation  = new Validation();
+            $emptyFieldError = $validation->fieldCheck();
+
+            if (empty($emptyFieldError)) {
+                $_SESSION['user_details']['lastname'] = $_POST['lastname'];
+                $_SESSION['user_details']['firstname'] = $_POST['firstname'];
+                $_SESSION['user_details']['email'] = $_POST['email'];
+                $_SESSION['user_details']['number'] = $_POST['number'];
+                header('Location: /panier/order_recap');
+                
+            } else {
+                return $this->twig->render('/Reservation/contact_form.html.twig', ['field_error' => $emptyFieldError]);
+            }
+        }
+
+        return $this->twig->render('/Reservation/contact_form.html.twig');
     }
 }
