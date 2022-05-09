@@ -2,6 +2,9 @@
 
 namespace App\Model;
 
+use DateTimeZone;
+use DateTime;
+
 class PanierManager extends AbstractManager
 {
     public const TABLE = 'products';
@@ -38,6 +41,9 @@ class PanierManager extends AbstractManager
 
     public function insertOrder(array $order)
     {
+        $currentDate = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        $orderDate = $currentDate->format('Y-m-d H:i:s');
+
         $userAddress = $order['user_details']['street_num'] . ' '
             . $order['user_details']['street'] . ' ' . $order['user_details']['post_code']
             . ' ' . $order['user_details']['city'];
@@ -53,9 +59,10 @@ class PanierManager extends AbstractManager
 
         $customerId = $this->getLastInsertId();
 
-        $statementOrder = $this->pdo->prepare("INSERT INTO user_order (customer_id, status)
-        VALUES (:customer_id, true)");
+        $statementOrder = $this->pdo->prepare("INSERT INTO user_order (customer_id, order_date, status)
+        VALUES (:customer_id, :order_date, true)");
         $statementOrder->bindValue('customer_id', $customerId);
+        $statementOrder->bindValue('order_date', $orderDate);
         $statementOrder->execute();
 
         $orderId = $this->getLastInsertId();
