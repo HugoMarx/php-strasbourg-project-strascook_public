@@ -11,7 +11,8 @@ class BackOfficeController extends AbstractController
     {
         $productsManager = new BOItemManager();
         $products = $productsManager->selectAllProducts();
-        return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products]);
+        $orders = $productsManager->selectAllOrders('order_id', 'ASC');
+        return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products, 'orders' => $orders]);
     }
 
 
