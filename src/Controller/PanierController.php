@@ -84,7 +84,6 @@ class PanierController extends AbstractController
         header('Location: /panier');
     }
 
-
     public function contactForm()
     {
 
@@ -118,8 +117,7 @@ class PanierController extends AbstractController
             'Panier/recap.html.twig',
             [
                 'total_price' => $totalPrice,
-                'total_item' => $totalItem
-            ]
+                'total_item' => $totalItem            ]
         );
     }
 }
