@@ -49,8 +49,6 @@ class ReservationController extends AbstractController
                 ]);
             }
         }
-
-
         return $this->twig->render('/Reservation/date_place_check.html.twig', ['limite_date' => $limiteDate]);
     }
 
