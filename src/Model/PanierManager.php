@@ -2,6 +2,9 @@
 
 namespace App\Model;
 
+use DateTimeZone;
+use DateTime;
+
 class PanierManager extends AbstractManager
 {
     public const TABLE = 'products';
@@ -27,5 +30,50 @@ class PanierManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+
+    public function getLastInsertId()
+    {
+        return $this->pdo->lastInsertId();
+    }
+
+
+    public function insertOrder(array $order)
+    {
+        $currentDate = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        $orderDate = $currentDate->format('Y-m-d H:i:s');
+
+        $userAddress = $order['user_details']['street_num'] . ' '
+            . $order['user_details']['street'] . ' ' . $order['user_details']['post_code']
+            . ' ' . $order['user_details']['city'];
+
+        $statement = $this->pdo->prepare("INSERT INTO customers (firstname, lastname, adress, email, number) VALUES
+        (:firstname, :lastname, :adress, :email, :number)");
+        $statement->bindValue('firstname', $order['user_details']['firstname']);
+        $statement->bindValue('lastname', $order['user_details']['lastname']);
+        $statement->bindValue('adress', $userAddress);
+        $statement->bindValue('email', $order['user_details']['email']);
+        $statement->bindValue('number', $order['user_details']['number']);
+        $statement->execute();
+
+        $customerId = $this->getLastInsertId();
+
+        $statementOrder = $this->pdo->prepare("INSERT INTO user_order (customer_id, order_date, status)
+        VALUES (:customer_id, :order_date, true)");
+        $statementOrder->bindValue('customer_id', $customerId);
+        $statementOrder->bindValue('order_date', $orderDate);
+        $statementOrder->execute();
+
+        $orderId = $this->getLastInsertId();
+
+        foreach ($order['cart'] as $product) {
+            $statement = $this->pdo->prepare("INSERT INTO order_details (products_id, product_amount, order_id) VALUES
+             (:products_id, :product_amount, :order_id)");
+            $statement->bindValue('products_id', $product['id']);
+            $statement->bindValue('product_amount', $product['qte']);
+            $statement->bindValue('order_id', $orderId);
+            $statement->execute();
+        }
     }
 }

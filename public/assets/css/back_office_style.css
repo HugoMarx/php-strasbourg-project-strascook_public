@@ -23,3 +23,7 @@ width: 50%;
 margin: auto;
 
 }
+
+a {
+    text-decoration: none;
+}

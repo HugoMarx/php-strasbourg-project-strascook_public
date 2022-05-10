@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
 --
 -- Host: 127.0.0.1    Database: strascook
 -- ------------------------------------------------------
@@ -28,6 +28,7 @@ CREATE TABLE `customers` (
   `lastname` varchar(100) DEFAULT NULL,
   `adress` longtext,
   `email` varchar(100) DEFAULT NULL,
+  `number` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +39,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Suleyman','Kutuk','10 rue principale 67000 Strasbourg','kutuk.suleymann@gmail.com'),(2,'Sophie','Verdier','2 Avenue De Gaulle 67000 Strasbourg','sophie.verdier188@gmail.com'),(3,'Hugo','Marx','33 rue stéphanie 67000 Strasbourg','marx.hugo@gmail.com');
+INSERT INTO `customers` VALUES (1,'Suleyman','Kutuk','10 rue principale 67000 Strasbourg','kutuk.suleymann@gmail.com',NULL),(2,'Sophie','Verdier','2 Avenue De Gaulle 67000 Strasbourg','sophie.verdier188@gmail.com',NULL),(3,'Hugo','Marx','33 rue stéphanie 67000 Strasbourg','marx.hugo@gmail.com',NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +58,7 @@ CREATE TABLE `images` (
   PRIMARY KEY (`id`),
   KEY `product_id_idx` (`product_id`),
   CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +67,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'tartecarotte.jpg',1,1),(2,'veloute.jpeg',2,1),(3,'croquettes.jpg',3,1),(4,'maki.jpg',4,1),(5,'tajine.jpg',5,1),(6,'chilli.jpg',6,1),(7,'rotitofu.jpg',7,1),(8,'pavlova.jpg',8,1),(9,'crumble.jpg',9,1),(10,'pudding.jpg',10,1),(11,'tartecarotte2.jpg',1,0),(12,'tartecarotte3.jpg',1,0),(13,'veloutepotimarron2.jpg',2,0),(14,'potimarrons.jpg',2,0),(15,'croquettes2.jpg',3,0),(16,'croquettes3.jpg',3,0),(17,'maki2.jpg',4,0),(18,'maki3.jpg',4,0),(19,'tajine2.jpg',5,0),(20,'tajine3.jpg',5,0),(21,'chilli2.jpg',6,0),(22,'chilli3.jpg',6,0),(23,'rotitofu2.jpg',7,0),(24,'rotitofu3.jpg',7,0),(25,'pavlova2.jpg',8,0),(26,'pavlova3.jpg',8,0),(27,'crumble2.jpg',9,0),(28,'crumble3.jpg',9,0),(29,'pudding2.jpg',10,0),(30,'pudding3.jpg',10,0);
+INSERT INTO `images` VALUES (1,'tartecarotte.jpg',1,1),(2,'veloute.jpeg',2,1),(3,'croquettes.jpg',3,1),(4,'maki.jpg',4,1),(5,'tajine.jpg',5,1),(6,'chilli.jpg',6,1),(7,'rotitofu.jpg',7,1),(8,'pavlova.jpg',8,1),(9,'crumble.jpg',9,1),(10,'pudding.jpg',10,1),(11,'tartecarotte2.jpg',1,0),(12,'tartecarotte3.jpg',1,0),(13,'veloutepotimarron2.jpg',2,0),(14,'potimarrons.jpg',2,0),(15,'croquettes2.jpg',3,0),(16,'croquettes3.jpg',3,0),(17,'maki2.jpg',4,0),(18,'maki3.jpg',4,0),(19,'tajine2.jpg',5,0),(20,'tajine3.jpg',5,0),(21,'chilli2.jpg',6,0),(22,'chilli3.jpg',6,0),(23,'rotitofu2.jpg',7,0),(24,'rotitofu3.jpg',7,0),(25,'pavlova2.jpg',8,0),(26,'pavlova3.jpg',8,0),(27,'crumble2.jpg',9,0),(28,'crumble3.jpg',9,0),(29,'pudding2.jpg',10,0),(30,'pudding3.jpg',10,0),(31,'tartecarotte.jpg',1,0),(32,'veloute.jpeg',2,0),(33,'croquettes.jpg',3,0),(34,'maki.jpg',4,0),(35,'tajine.jpg',5,0),(36,'chilli.jpg',6,0),(37,'rotitofu.jpg',7,0),(38,'pavlova.jpg',8,0),(39,'crumble.jpg',9,0),(40,'pudding.jpg',10,0);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,12 +196,8 @@ CREATE TABLE `user_login` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_name` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
-  `sign_up` datetime DEFAULT NULL,
-  `customers_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_user_login_customers_idx` (`customers_id`),
-  CONSTRAINT `fk_user_login_customers` FOREIGN KEY (`customers_id`) REFERENCES `customers` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,6 +206,7 @@ CREATE TABLE `user_login` (
 
 LOCK TABLES `user_login` WRITE;
 /*!40000 ALTER TABLE `user_login` DISABLE KEYS */;
+INSERT INTO `user_login` VALUES (1,'yavuz','d4e520d9130bddccba586603dd622562');
 /*!40000 ALTER TABLE `user_login` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -221,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-29 15:29:37
+-- Dump completed on 2022-05-09 10:18:08

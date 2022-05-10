@@ -13,7 +13,7 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
-    'admin' => ['AdminController', 'dashboard'],
+    'admin' => ['BackofficeController', 'dashboard'],
     'backoffice/add' => ['BackOfficeController', 'add'],
     'backoffice/delete' => ['BackOfficeController', 'delete'],
     'backoffice/edit' => ['BackOfficeController', 'edit', ['id']],
@@ -29,10 +29,9 @@ return [
     'panier/delete' => ['PanierController', 'delete',],
     'panier/edit' => ['PanierController', 'edit',],
     'panier/empty' => ['PanierController', 'empty',],
+    'panier/contact' => ['PanierController', 'contactForm',],
+    'panier/validation' => ['PanierController', 'validation',],
+    'panier/order_recap' => ['PanierController', 'orderRecap',],
+    'panier/confirmation' => ['PanierController', 'orderConfirmation',],
     'logout' => ['loginController', 'logout',],
-
-
-
-
-
 ];

@@ -24,11 +24,13 @@ class MenuController extends AbstractController
                 'type' => $product['type'],
                 'typeid' => $product['product_type_id'],
                 'image' => $images,
-                ];
+            ];
         }
+
+        $message = (isset($_GET['message'])) ? $_GET['message'] : '';
         return $this->twig->render(
             'Menu/menu.html.twig',
-            ['products' => $products, 'filtres' => $productManager->selectAllType()]
+            ['products' => $products, 'message' => $message, 'filtres' => $productManager->selectAllType()]
         );
     }
 }
