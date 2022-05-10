@@ -1,8 +1,11 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/panier_style.css">
+{% endblock %}
+
 {% block content %}
 
-	<section class="products container col-8">
+	<section class="products container col-md-9">
 		<div class="row">
 			<h1>Mon panier</h1>
 			{% if user.cart is empty %}
@@ -27,9 +30,9 @@
 							{% for key,item in user.cart %}
 								<tr>
 									<td>{{item.name}}</td>
-									<td class='text-center'>{{item.type}}</td>
+									<td class='md-text-center'>{{item.type}}</td>
 									<td>
-										<div class="d-flex justify-content-center">
+										<div class="d-block d-md-flex justify-content-center ">
 											<a href="/panier/edit?to=del&id={{key}}">
 												<button type="button" class="btn btn-primary btn-sm py-0 m-1">-</button>
 											</a>
