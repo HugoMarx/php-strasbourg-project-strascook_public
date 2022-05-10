@@ -16,11 +16,12 @@ class ReservationController extends AbstractController
             $validation = new Validation();
             $error = [];
             $emptyFieldError = $validation->fieldCheck();
+
             if (!empty($this->placeCheck()) && !empty($this->dateCheck())) {
                 $error = array_merge($this->placeCheck(), $this->dateCheck());
             } elseif (empty($this->placeCheck())) {
                 $error = $this->dateCheck();
-            } elseif (empty($this->dateCheck())) {
+            } else {
                 $error = $this->placeCheck();
             }
 
@@ -32,7 +33,17 @@ class ReservationController extends AbstractController
                     'street_num' => $_POST['home_number'],
                     'post_code' => $_POST['post_code']
                 );
+
                 header('Location: /menu?message=ok');
+
+                if ($_GET) {
+                    if ($_GET['from'] === 'validation' || $_GET['from'] === 'cart') {
+                        header('Location: /panier/validation');
+                    }
+                } else {
+                    header('Location: /menu');
+                }
+              
             } else {
                 return $this->twig->render('/Reservation/date_place_check.html.twig', [
                     'error' => $error,
@@ -41,10 +52,9 @@ class ReservationController extends AbstractController
                 ]);
             }
         }
-
-
         return $this->twig->render('/Reservation/date_place_check.html.twig', ['limite_date' => $limiteDate]);
     }
+
 
     public function placeCheck(): ?array
     {

@@ -1,0 +1,63 @@
+{% extends "./layout.html.twig" %}
+
+{% block title %}
+	📧 Mon Panier - Contact
+{% endblock %}
+
+{% block  content %}
+
+	<div class=" container border border-1 rounded-3 shadow mt-4 mb-5">
+		<div class="container mt-4 mb-0 text-center ">
+			<h4>Veuillez renseigner vos coordonnées :</h4>
+
+		</div>
+
+		<section class='my-5'>
+			<div class="container w-50">
+				<div class="mb-3">
+					<form action="" method='POST' enctype='multipart/form-data'>
+						<div class='row gap-2 w-100 mx-auto align-items-start justify-content-center'>
+							<div class="mb-3 col-3 mx-0 my-0 p-0">
+								<input type="text" class="form-control" id="exampleFormControlInput1" name="lastname" placeholder="Nom">
+							</div>
+							<div class="mb-3 col-3 mx-0 my-0 p-0 ">
+								<input type="text" class="form-control" id="exampleFormControlInput1" name="firstname" placeholder="Prénom">
+							</div>
+						</div>
+
+						<div class="mb-3 col-7 mx-auto my-0 p-0 ">
+							<input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="Adresse email">
+						</div>
+
+						<div class="mb-3 col-7 mx-auto my-0 p-0 ">
+							<input type="tel" class="form-control" id="exampleFormControlInput1" name="number" placeholder="n° de téléphone">
+						</div>
+
+		{% if field_error is not empty %}
+
+						<div class="alert alert-danger col-5 m-auto mb-0" role="alert">
+							<h4 class="alert-heading fs-6">Merci de renseigner le(s) champ(s) suivant(s) :</h4>
+							<hr>
+							<ul class='m-0'>
+								{% for error in field_error %}
+									<li class="mb-0">{{error}}</li>
+								{% endfor %}
+							</ul>
+
+						</div>
+
+					{% endif %}
+
+						<div class="text-center p-0"><input type="submit" class="btn btn-primary mt-4" value=" Confirmer "></div>
+					</form>
+					<div class="text-center p-0">
+						<a href="/panier/validation">
+							<button class="btn btn-danger mt-2 px-4">Retour</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+{% endblock %}
