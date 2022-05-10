@@ -8,7 +8,6 @@ class BOItemManager extends AbstractManager
 {
     public const TABLE = 'products';
 
-
     public function selectAllProducts(string $orderBy = 'name', string $direction = 'ASC'): array
     {
         $query = 'SELECT * FROM ' . static::TABLE;
@@ -55,5 +54,18 @@ class BOItemManager extends AbstractManager
         $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id);
         $statement->execute();
+    }
+
+    public function selectAllOrders(string $orderBy = '', string $direction = ''): array
+    {
+        $query = 'SELECT order_details.order_id, customers.lastname, customers.firstname,
+        order_date, total_price, SUM(product_amount) as total_products FROM user_order
+        JOIN customers ON customers.id = user_order.customer_id
+        JOIN order_details ON order_details.order_id = user_order.id
+        GROUP BY order_id';
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+        return $this->pdo->query($query)->fetchAll();
     }
 }

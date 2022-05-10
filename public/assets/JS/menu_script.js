@@ -27,3 +27,26 @@ function deleteItem() {
 
 addItem();
 deleteItem();
+
+
+
+let filters = document.querySelectorAll('input[type="radio"]');
+filters.forEach(function(filter) {
+    filter.addEventListener('click', function(e) {
+        let product_type = e.target.id;
+        let products = document.querySelectorAll('.col-xs');
+        let productsFilter = document.querySelectorAll(`.${product_type}`);
+        products.forEach(function(product) {
+                if (product.classList.contains('col-xs')) {
+                    if (document.querySelector('input[id="all"]').checked) {
+                        product.style.display = 'flex';
+                    } else if (filter.id==product.id && filter.checked) {
+                        product.style.display = 'flex';
+                    } else if (filter.id!=product.id && filter.checked) {
+                        product.style.display = 'none';
+                    }
+                }
+            
+        });
+    });
+});

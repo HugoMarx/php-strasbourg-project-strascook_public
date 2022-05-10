@@ -132,8 +132,6 @@ class PanierController extends AbstractController
             src='https://i.ibb.co/FsLK0CW/Logo-Strascook-Alpha.png' width='300px' height='150px'/>";
 
         mail($destinataire, 'Strascook', $contenu, $entete);
-
-        header('Location: /panier/order_recap?message=ok');
     }
 
 
@@ -160,5 +158,13 @@ class PanierController extends AbstractController
                 'total_item' => $totalItem
             ]
         );
+    }
+
+    public function orderConfirmation()
+    {
+        $panierManager = new PanierManager();
+        $panierManager->insertOrder($_SESSION);
+        $this->mailto();
+        return $this->twig->render('Panier/order_confirmation.html.twig');
     }
 }
