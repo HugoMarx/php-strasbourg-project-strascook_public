@@ -26,7 +26,6 @@ class MenuController extends AbstractController
                 'image' => $images,
                 ];
         }
-
         return $this->twig->render(
             'Menu/menu.html.twig',
             ['products' => $products, 'filtres' => $productManager->selectAllType()]
