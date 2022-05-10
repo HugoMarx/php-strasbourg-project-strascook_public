@@ -21,3 +21,14 @@ width: 30%;
     width: 53%;
 
 }
+
+.form-check{
+    display: inline-flex;
+    margin-left: 40px;
+    
+}
+
+.box{
+    text-align: center;
+}
+
