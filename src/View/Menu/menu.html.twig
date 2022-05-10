@@ -48,11 +48,11 @@
                             </div>
 							<div class="card-info">
 								<h4 class="card-text fw-bold">{{product.name}}</h4>
-								<p class="card-text">{{product.description}}</p>
+								<p class="card-text description">{{product.description}}</p>
 							</div>
 
 							<div class="col priceblock">
-								<h6 class="price fs-3 my-3 fw-bold">{{product.price}}€</h6>
+								<h6 class="price fs-3 mb-3 mt-0 fw-bold">{{product.price}}€</h6>
 							</div>
 							{% if user.user_details %}
 								<form action="/menu/add" method='GET' class="d-flex flex-column">

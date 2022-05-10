@@ -29,12 +29,16 @@ width: 30%;
 
 }
 
+.description{
+    min-height:150px;
+}
+
 .card-info{
     min-height:200px;
 }
 
 .card-info h4 {
-     height:60px;
+     min-height:60px;
 }
 
 
