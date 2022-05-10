@@ -12,8 +12,9 @@
 			<div class=" container border border-1 rounded-3 shadow-sm mt-4 mb-3 pt-4 text-center col-3">
 
 				<p class=''>
-					<strong>Date de réservation :</strong></p>
-					<p>{{user.user_details.reservation_date}}</p>
+					<strong>Date de réservation :</strong>
+				</p>
+				<p>{{user.user_details.reservation_date}}</p>
 			</div>
 
 			<div class=" container border border-1 rounded-3 shadow-sm mt-4 mb-3 pt-4 text-center col-4">
@@ -73,5 +74,7 @@
 	</tfoot>
 
 </table></section></div><div class="text-center"><a href="/panier/order_recap">
-<button type="button" class="btn btn-primary mb-2">Finaliser ma commande</button></a></div><div class="text-center"><a href="/panier">
-<button type="button" class="btn btn-danger btn-sm">Retour au panier</button></a></div>{% endblock %}
+
+
+<a href="/panier/mailto" class="btn btn-primary mb-2">Finaliser ma commande</a></div><div class="text-center">
+<button type="button" class="btn btn-danger btn-sm">Retour au panier</button></div>{% endblock %}
