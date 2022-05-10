@@ -21,3 +21,41 @@ width: 30%;
     width: 53%;
 
 }
+
+
+.card-img-top{
+    object-fit: cover;
+    height:300px;
+
+}
+
+.card-info{
+    min-height:200px;
+}
+
+.card-info h4 {
+     height:60px;
+}
+
+
+.preview img{
+    object-fit: cover;
+    height: 100%;
+}
+
+.preview{
+    margin-bottom: 20px;
+
+}
+
+.preview span :hover{
+    border: var(--primary-btn) solid 3px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width:768px){
+
+    .card h6 {
+        text-align: center;
+        }
+}
