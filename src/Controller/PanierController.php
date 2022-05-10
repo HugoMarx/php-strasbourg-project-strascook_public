@@ -112,38 +112,22 @@ class PanierController extends AbstractController
     public function mailto()
     {
 
-        $panier = '<table>';
-        $panier .= '<thead>';
-        $panier .= '<tr>';
-        $panier .= '<td>Plat</td>';
-        $panier .= '<td>price</td>';
-        $panier .= '<td>qte</td>';
-        $panier .= '</tr>';
-        $panier .= '</thead>';
-        $panier .= '<tbody>';
-        foreach ($_SESSION['cart'] as $product) {
-            $panier .= '<tr>';
-            $panier .= '<td>' . $product['name'] . '</td>';
-            $panier .= '<td>' . $product['price'] . '</td>';
-            $panier .= '<td>' . $product['qte'] . '</td>';
-            $panier .= '</tr>';
-        }
-        $panier .= '</tbody>';
-        $panier .= '</table>';
+        $panier = $this->twig->render('emails/panier.html.twig', ['cart' => $_SESSION['cart']]);
+
 
         $entete  = 'MIME-Version: 1.0' . "\r\n";
         $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
         $entete .= 'From: strascook@monsite.fr' . "\r\n";
         $entete .= 'Reply-to: strascook@monsite.fr';
 
-        $destinataire = 'kutuk.suleymann@gmail.com';
-        $contenu = ' Merci nous avons bien recu votre commande !' . '<br>';
-        $contenu .= 'Nom: ' . $_SESSION['user_details']['lastname'] . '<br>';
-        $contenu .= 'Prenom: ' . $_SESSION['user_details']['firstname'] . '<br>';
-        $contenu .= 'Adresse: ' . $_SESSION['user_details']['city'] . '<br>';
-        $contenu .= 'Code-Postal: ' . $_SESSION['user_details']['post_code'] . '<br>';
-        $contenu .= 'E-mail: ' . $_SESSION['user_details']['email'] . '<br>';
-        $contenu .= 'Message: <br/>' . $panier . '<br>';
+        $destinataire = 'kutuk.suleymann@gmail.com,' . $_SESSION['user_details']['email'] . '';
+        $contenu = ' Merci nous avons bien réceptionner votre commande ' . '<br>';
+        $contenu .= '<br>' . 'Nom: ' . $_SESSION['user_details']['lastname'] . '<br>';
+        $contenu .= '<br>' . 'Prenom: ' . $_SESSION['user_details']['firstname'] . '<br>';
+        $contenu .= '<br>' . 'Adresse: ' . $_SESSION['user_details']['city'] . '<br>';
+        $contenu .= '<br>' . 'Code-Postal: ' . $_SESSION['user_details']['post_code'] . '<br>';
+        $contenu .= '<br>' . 'E-mail: ' . $_SESSION['user_details']['email'] . '<br>';
+        $contenu .= '' . $panier . '<br>';
         $contenu .= "<img 
             src='https://i.ibb.co/FsLK0CW/Logo-Strascook-Alpha.png' width='300px' height='150px'/>";
 
