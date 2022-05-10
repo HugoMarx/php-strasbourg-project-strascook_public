@@ -6,6 +6,13 @@ class ProductManager extends AbstractManager
 {
     public const TABLE = 'products';
     public const TABLEIMAGE = 'images';
+    public const TABLEPT = 'product_type';
+
+    public function selectProductsType(): array
+    {
+        return $this->pdo->query('SELECT P.*, TP.type FROM products P, ' .
+        self::TABLEPT . ' TP WHERE P.product_type_id=TP.id')->fetchAll();
+    }
 
     public function selectAllImages(int $productId): array
     {
@@ -14,5 +21,10 @@ class ProductManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    public function selectAllType()
+    {
+        return $this->pdo->query('SELECT * FROM ' . self::TABLEPT)->fetchAll();
     }
 }
