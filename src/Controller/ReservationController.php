@@ -43,7 +43,6 @@ class ReservationController extends AbstractController
                 } else {
                     header('Location: /menu');
                 }
-              
             } else {
                 return $this->twig->render('/Reservation/date_place_check.html.twig', [
                     'error' => $error,
