@@ -50,6 +50,7 @@ class PanierController extends AbstractController
         $cartProducts['qte'] = $_GET['qte'];
         $_SESSION['cart'][] = $cartProducts;
 
+
         header('Location: /menu');
     }
 

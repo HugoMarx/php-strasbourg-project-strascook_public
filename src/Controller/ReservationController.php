@@ -34,6 +34,8 @@ class ReservationController extends AbstractController
                     'post_code' => $_POST['post_code']
                 );
 
+                header('Location: /menu?message=ok');
+
                 if ($_GET) {
                     if ($_GET['from'] === 'validation' || $_GET['from'] === 'cart') {
                         header('Location: /panier/validation');

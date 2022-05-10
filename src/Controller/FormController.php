@@ -37,17 +37,24 @@ class FormController extends AbstractController
 
 
 
-                $destinataire = '@gmail.com';
-                $contenu = '<p>Tu as un nouveau message !</p>';
-                $contenu .= '<p><strong>Nom</strong>: ' . $nom . '</p>';
-                $contenu .= '<p><strong>Email</strong>: ' . $prenom . '</p>';
-                $contenu .= '<p><strong>Message</strong>: ' . $adresse . '</p>';
-                $contenu .= '<p><strong>Message</strong>: ' . $postal . '</p>';
-                $contenu .= '<p><strong>Message</strong>: ' . $email . '</p>';
-                $contenu .= '<p><strong>Message</strong>: ' . $message . '</p>';
+                $entete  = 'MIME-Version: 1.0' . "\r\n";
+                $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+                $entete .= 'From: webmaster@monsite.fr' . "\r\n";
+                $entete .= 'Reply-to: kutuk.suleymann@gmail.com';
+
+                $destinataire = 'kutuk.suleymann@gmail.com';
+                $contenu = 'Tu as une nouvelle demande !' . '<br>';
+                $contenu .= 'Nom: ' . $nom . '<br>';
+                $contenu .= 'Prenom: ' . $prenom . '<br>';
+                $contenu .= 'Adresse: ' . $adresse . '<br>';
+                $contenu .= 'Code-Postal: ' . $postal . '<br>';
+                $contenu .= 'E-mail: ' . $email . '<br>';
+                $contenu .= 'Message: ' . $message . '<br>';
+                $contenu .= "<img 
+                src='https://i.ibb.co/FsLK0CW/Logo-Strascook-Alpha.png' width='300px' height='150px'/>";
 
 
-                mail($destinataire, 'test', $contenu);
+                mail($destinataire, 'Strascook', $contenu, $entete);
                 header("location: /form?message=ok");
             }
 
