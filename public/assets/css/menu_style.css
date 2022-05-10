@@ -1,0 +1,34 @@
+@import url(./style.css) root;
+
+.qte-selector input {
+width: 30%;
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+.qte-selector span
+{
+
+    cursor: pointer;
+}
+
+.qte-selector span:hover{
+    background-color: var(--primary-btn);
+    color: white;
+}
+
+.submit-custom{
+    width: 53%;
+
+}
+
+.form-check{
+    display: inline-flex;
+    margin-left: 40px;
+    
+}
+
+.box{
+    text-align: center;
+}
+

@@ -1,0 +1,95 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	🍲 Notre Carte
+{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/menu_style.css">
+{% endblock %}
+
+{% block content %}
+
+
+	<div class="pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center ">
+		<h3 class='titre '>Découvrez nos plats</h3>
+	</div>
+	<div class="box">
+        <div class="mb-3 form-check">
+            <input type="radio" name="radio" class="form-check-input" id="all">
+            <label class="form-check-label" for="exampleCheck1">Tous les plats</label>
+        </div>
+        {% for filtre in filtres %}
+            <div class="mb-3 form-check">
+                <input type="radio" name="radio" class="form-check-input" id="{{ filtre.type}}">
+                <label class="form-check-label"" for="exampleCheck1">{{ filtre.type }}</label>
+            </div>
+        {% endfor %}
+    </div>
+
+
+	{% if message is defined and message is not empty  %}
+		<div class=" pill rounded-pill border border-2 p-3 my-5 shadow-sm text-center   alert alert-success " role="alert">
+			Vos coordonnées sont corrects vous pouvez maintenant ajouter au panier.
+		</div>
+	{% endif %}
+
+
+	<div class="container">
+		<div class="row row-cols-1 row-cols-md-3 g-4 ">
+
+			{% for product in products %}
+				<div class="col-xs" id="{{ product.type }}">
+					<div class="container">
+						<div class="card">
+
+							{% for image in product.image %}
+								{% if image.couverture == 1  %}
+
+									<img src="/assets/images/{{image.name}}" class="card-img-top sv-cover" alt="...">
+								{% endif %}
+							{% endfor %}
+
+							<div class="card-body">
+
+								{% for image in product.image %}
+									{% if image.couverture != 1  %}
+										<span><img src="/assets/images/{{image.name}}" class="img-thumbnail sv-thumbnail" width="100px" alt="..."></span>
+									{% endif %}
+								{% endfor %}
+								<div class="card-body">
+									<h4 class="card-text">{{product.name}}</h4>
+									<p class="card-text">{{product.description}}</p>
+								</div>
+
+								<div class="col ">
+									<h6 class="price ">{{product.price}}€</h6>
+								</div>
+								{% if user.user_details %}
+									<form action="/menu/add" method='GET' class="d-flex flex-column">
+										<input type="hidden" name='id' value='{{product.reference}}'>
+										<div class="input-group me-2 qte-selector justify-content-center">
+											<span class="input-group-text del_item">-</span>
+											<input type="text" aria-label="Sizing example input" aria-describedby="item quantity" class='item_quantity' value='1' name='qte'>
+											<span class="input-group-text add_item">+</span>
+										</div>
+										<div class="text-center"><input class="btn col submit-custom mt-2" type="submit" value='Ajouter'></div>
+									</form>
+								{% else %}
+									<div class="messagereservation" role="alert">
+										Remplissez d'abord les conditions de reservation pour ajouter au panier
+									</div>
+
+									<a class="btn col  " href="/reservation">Reserver</a>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascript %}
+	<script src="assets/JS/menu_script.js"></script>
+{% endblock %}

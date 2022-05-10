@@ -1,0 +1,41 @@
+<section class='my-5'>
+	<div class="container w-50">
+		<div class="mb-3">
+			<form action="" method='POST' enctype='multipart/form-data'>
+				<input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Nom du plat">
+			</div>
+			<div class="mb-3">
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder='Description du produit'></textarea>
+			</div>
+			<div class='row gap-2 w-100 mx-auto align-items-start'>
+				<div class="mb-3 col mx-auto my-0 p-0 ">
+					<input type="text" class="form-control" id="exampleFormControlInput1" name="prix" placeholder="Prix">
+				</div>
+				<select class="form-select col" aria-label="Default select example" name="status">
+					<option value="1">Disponible</option>
+					<option value="0">Indisponible</option>
+				</select>
+				<select class="form-select col" aria-label="Default select example" name="type">
+					<option value="1">Entrée</option>
+					<option value="2">Plat</option>
+					<option value="3">Dessert</option>
+					<option value="4">Boisson</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label">
+					Illustration(s)
+				</label>
+				<input type="file" class="form-control" name="images" placeholder="Uploader une image">
+				<div class="text-center p-0"><input type="submit" class="btn btn-primaire mt-4" value=" Ajouter la recette "></div>
+			</form>
+			<div class="text-center p-0">
+				<a href="/admin">
+					<button class="btn btn-suppr mt-2 px-4">Annuler</button>
+				</a>
+			</div>
+		</div>
+
+
+	</div>
+</section>

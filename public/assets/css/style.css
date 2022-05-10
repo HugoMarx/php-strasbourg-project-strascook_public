@@ -1,0 +1,191 @@
+:root {
+    /* Couleurs boutons */
+
+    --primary-btn: #c0d904;
+    --secondary-btn: #72a603;
+    --catchy-btn: #d93d4a;
+
+    /* Couleurs de contraste */
+
+    --dark: #181413;
+    --dark-green: #274001;
+    --dark-sand: #d98c4a;
+}
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+.logo-main {
+    display: block;
+    margin: auto;
+    max-width: 20rem;
+}
+
+li a {
+    text-decoration: none;
+    line-height: 4rem;
+    text-align: center;
+    color: #444444;
+    font-size: 2rem;
+}
+li a:after {
+    content: "";
+    display: block;
+    margin-bottom: 1px;
+    height: 1px;
+    width: 1px;
+    background: transparent;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+li a:hover:after {
+    width: 70%;
+    background: #444;
+}
+@media screen and (max-width: 950px) {
+    li a:hover:after {
+        width: 20%;
+        background: #444;
+    }
+
+    li a {
+        text-decoration: none;
+        line-height: 4rem;
+        text-align: center;
+        color: #444444;
+        font-size: 19px;
+    }
+}
+
+@media screen and (max-width: 1411px) and (min-width: 990px) {
+    li a {
+        text-decoration: none;
+        line-height: 2rem;
+        text-align: center;
+        color: #444444;
+        font-size: 17px;
+    }
+}
+
+.card-img-top {
+    object-fit: fill;
+}
+
+.card-left {
+    width: 8rem;
+}
+
+.nav-link {
+    margin-right: 4rem;
+}
+
+.get-in-touch {
+    max-width: 800px;
+    margin: 50px auto;
+    position: relative;
+}
+.get-in-touch .title {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1em;
+    line-height: 48px;
+    padding-bottom: 48px;
+    color: #72a603;
+}
+
+.contact-form .form-field {
+    position: relative;
+    margin: 32px 0;
+}
+.contact-form .input-text {
+    display: block;
+    width: 100%;
+    height: 36px;
+    border-width: 0 0 2px 0;
+
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+}
+.contact-form .input-text:focus {
+    outline: none;
+}
+.contact-form .input-text:focus + .label,
+.contact-form .input-text.not-empty + .label {
+    -webkit-transform: translateY(-24px);
+    transform: translateY(-24px);
+}
+.contact-form .label {
+    position: absolute;
+    left: 20px;
+    bottom: 11px;
+    font-size: 18px;
+    line-height: 70px;
+    font-weight: 400;
+    color: #72a603;
+    cursor: text;
+    transition: -webkit-transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+.contact-form .submit-btn {
+    display: inline-block;
+
+    background-image: linear-gradient(125deg, #72a603, #c0d904);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    width: 200px;
+    cursor: pointer;
+}
+
+.messagereservation {
+    color: #d93d4a;
+
+    margin: 2rem;
+}
+
+.pill {
+    width: 20rem;
+    letter-spacing: 2px;
+    margin: auto;
+}
+.btn.ac {
+    background-image: linear-gradient(125deg, #72a603, #c0d904);
+    color: white;
+    width: 10rem;
+}
+
+.btn.col {
+    background-image: linear-gradient(125deg, #72a603, #c0d904);
+    color: white;
+}
+
+.carousel-inner {
+    margin: auto;
+    height: 70%;
+    width: 60%;
+}
+
+.presentation {
+    text-align: center;
+    margin: auto;
+    padding: 40px;
+    color: rgb(6, 111, 116);
+}
+
+.title-avis {
+    background-image: linear-gradient(125deg, #72a603, #c0d904);
+    color: white;
+    width: 20rem;
+    text-align: center;
+    margin: auto;
+}
+
+.trustpilot-widget {
+    margin: 3rem;
+}

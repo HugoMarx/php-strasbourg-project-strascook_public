@@ -1,0 +1,39 @@
+footer{
+    background-color: rgb(244, 244, 244);
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: rgb(206, 206, 206) -2px -2px 20px;
+}
+
+
+footer a {
+    color: #0d5e47;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.copyright {
+    font-size: small;
+    color: #0d5e47;
+    text-align: center;
+}
+
+@media screen and (max-width: 425px){
+
+    footer a {
+        margin: 0 ;
+
+    }
+
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    ul a {
+        margin-bottom: 15px;
+    }
+
+
+}

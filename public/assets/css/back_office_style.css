@@ -1,0 +1,29 @@
+:root{
+--btn-primary: #C0D904;
+--btn-del: #D93D4A
+}
+
+
+.alert {
+    max-width: 50vh;
+}
+
+.btn-primaire {
+    background-color: var(--btn-primary);
+}
+
+.btn-suppr{
+    background-color:  var(--btn-del);
+    color: rgb(255, 255, 255);
+}
+
+.pill
+{
+width: 50%;
+margin: auto;
+
+}
+
+a {
+    text-decoration: none;
+}
