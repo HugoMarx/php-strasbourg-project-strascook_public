@@ -118,7 +118,15 @@ class PanierController extends AbstractController
             'Panier/recap.html.twig',
             [
                 'total_price' => $totalPrice,
-                'total_item' => $totalItem            ]
+                'total_item' => $totalItem
+            ]
         );
+    }
+
+    public function orderConfirmation()
+    {
+        $panierManager = new PanierManager();
+        $panierManager->insertOrder($_SESSION);
+        return $this->twig->render('Panier/order_confirmation.html.twig');
     }
 }

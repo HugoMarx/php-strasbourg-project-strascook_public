@@ -11,7 +11,8 @@ class BackOfficeController extends AbstractController
     {
         $productsManager = new BOItemManager();
         $products = $productsManager->selectAllProducts();
-        return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products]);
+        $orders = $productsManager->selectAllOrders('order_id', 'ASC');
+        return $this->twig->render('Back_office/dashboard.html.twig', ['products' => $products, 'orders' => $orders]);
     }
 
 
@@ -81,7 +82,7 @@ class BackOfficeController extends AbstractController
                 // clean $_POST data
                 $product = array_map('trim', $_POST);
                 $productsManager->updateProduct($product);
-                header('Location: /backoffice/dashboard');
+                header('Location: /admin');
             } else {
                 return  $this->twig->render(
                     'Back_office/edit_item.html.twig',
@@ -102,7 +103,7 @@ class BackOfficeController extends AbstractController
             $productManager = new BOItemManager();
             $productManager->delete($_GET['id']);
 
-            header('Location: /backoffice/dashboard');
+            header('Location: /admin');
         }
     }
 }
