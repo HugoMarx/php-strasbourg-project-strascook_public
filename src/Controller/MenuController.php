@@ -12,20 +12,24 @@ class MenuController extends AbstractController
     public function menu(): string
     {
         $productManager = new productManager();
-        $productsBrut = $productManager->selectAll();
-
+        $productsBrut = $productManager->selectProductsType();
         $products = $images = [];
         foreach ($productsBrut as $product) {
             $images = $productManager->selectAllImages($product['id']);
-            $products[$product['id']] = [
+            $products[] = [
                 'reference' => $product['id'],
                 'name' => $product['name'],
                 'price' => $product['price'],
                 'description' => $product['description'],
+                'type' => $product['type'],
+                'typeid' => $product['product_type_id'],
                 'image' => $images,
                 ];
         }
 
-        return $this->twig->render('Menu/menu.html.twig', ['products' => $products]);
+        return $this->twig->render(
+            'Menu/menu.html.twig',
+            ['products' => $products, 'filtres' => $productManager->selectAllType()]
+        );
     }
 }
