@@ -22,7 +22,6 @@ width: 30%;
 
 }
 
-<<<<<<< HEAD
 
 .card-img-top{
     object-fit: cover;
@@ -64,15 +63,13 @@ width: 30%;
         text-align: center;
         }
 }
-=======
 .form-check{
     display: inline-flex;
     margin-left: 40px;
-    
+
 }
 
 .box{
     text-align: center;
 }
 
->>>>>>> 39200ed616971ef21b7e61d2146185d1ce8d6c15

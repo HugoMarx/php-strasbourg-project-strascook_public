@@ -23,7 +23,7 @@
         {% for filtre in filtres %}
             <div class="mb-3 form-check">
                 <input type="radio" name="radio" class="form-check-input" id="{{ filtre.type}}">
-                <label class="form-check-label"" for="exampleCheck1">{{ filtre.type }}</label>
+                <label class="form-check-label" for="exampleCheck1">{{ filtre.type }}</label>
             </div>
         {% endfor %}
     </div>
@@ -41,7 +41,7 @@
 
 			{% for product in products %}
 
-				<div class="col-xs">
+				<div class="col-xs" id="{{ product.type }}">
 					<div class="card h-100">
 
 						{% for image in product.image %}
