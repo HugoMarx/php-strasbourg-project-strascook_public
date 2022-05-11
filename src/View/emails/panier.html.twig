@@ -15,7 +15,7 @@
 			{% set totalprice = 0 %}
 			{% set totalqte = 0 %}
 			{% for product in cart %}
-				{% set totalprice = totalprice + product['price'] %}
+				{% set totalprice = totalprice + ( product['price'] * product['qte']) %}
 				{% set totalqte = totalqte + product['qte'] %}
 				<tr>
 					<td style="width:20%;padding:5px;font-weight: bold;">
