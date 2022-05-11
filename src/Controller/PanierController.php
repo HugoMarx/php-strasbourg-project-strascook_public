@@ -112,7 +112,7 @@ class PanierController extends AbstractController
     public function mailto()
     {
 
-        $panier = $this->twig->render('emails/panier.html.twig', ['cart' => $_SESSION['cart']]);
+        $panier = $this->twig->render('emails/panier.html.twig', ['cart' => $_SESSION['cart'],]);
 
 
         $entete  = 'MIME-Version: 1.0' . "\r\n";
@@ -121,15 +121,20 @@ class PanierController extends AbstractController
         $entete .= 'Reply-to: strascook@monsite.fr';
 
         $destinataire = 'kutuk.suleymann@gmail.com,' . $_SESSION['user_details']['email'] . '';
-        $contenu = ' Merci nous avons bien réceptionner votre commande ' . '<br>';
+        $contenu = ' Merci nous avons bien réceptionnée votre commande ' . '<br>';
         $contenu .= '<br>' . 'Nom: ' . $_SESSION['user_details']['lastname'] . '<br>';
         $contenu .= '<br>' . 'Prenom: ' . $_SESSION['user_details']['firstname'] . '<br>';
-        $contenu .= '<br>' . 'Adresse: ' . $_SESSION['user_details']['city'] . '<br>';
+        $contenu .= '<br>' . 'Numero: ' .  $_SESSION['user_details']['number'] . '<br>';
+        $contenu .= '<br>' . 'Adresse: ' .  $_SESSION['user_details']['street_num'] . ' '
+            . $_SESSION['user_details']['street'] . '<br>';
+
+        $contenu .= '<br>' . 'Ville: ' . $_SESSION['user_details']['city'] . '<br>';
         $contenu .= '<br>' . 'Code-Postal: ' . $_SESSION['user_details']['post_code'] . '<br>';
         $contenu .= '<br>' . 'E-mail: ' . $_SESSION['user_details']['email'] . '<br>';
         $contenu .= '' . $panier . '<br>';
         $contenu .= "<img 
-            src='https://i.ibb.co/FsLK0CW/Logo-Strascook-Alpha.png' width='300px' height='150px'/>";
+            src='https://i.ibb.co/FsLK0CW/Logo-Strascook-Alpha.png' 
+            width='300px' height='150px'/>";
 
         mail($destinataire, 'Strascook', $contenu, $entete);
     }
