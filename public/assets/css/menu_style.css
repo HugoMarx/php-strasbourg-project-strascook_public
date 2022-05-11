@@ -22,6 +22,49 @@ width: 30%;
 
 }
 
+<<<<<<< HEAD
+
+.card-img-top{
+    object-fit: cover;
+    height:300px;
+
+}
+
+.description{
+    min-height:150px;
+}
+
+.card-info{
+    min-height:200px;
+}
+
+.card-info h4 {
+     min-height:60px;
+}
+
+
+.preview img{
+    object-fit: cover;
+    height: 100%;
+}
+
+.preview{
+    margin-bottom: 20px;
+
+}
+
+.preview span :hover{
+    border: var(--primary-btn) solid 3px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width:768px){
+
+    .card h6 {
+        text-align: center;
+        }
+}
+=======
 .form-check{
     display: inline-flex;
     margin-left: 40px;
@@ -32,3 +75,4 @@ width: 30%;
     text-align: center;
 }
 
+>>>>>>> 39200ed616971ef21b7e61d2146185d1ce8d6c15
