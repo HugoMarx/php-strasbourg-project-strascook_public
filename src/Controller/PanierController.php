@@ -99,16 +99,58 @@ class PanierController extends AbstractController
                 $_SESSION['user_details']['number'] = $_POST['number'];
                 header('Location: /panier/order_recap');
             } else {
-                return $this->twig->render('/Reservation/contact_form.html.twig', ['field_error' => $emptyFieldError]);
+                return $this->twig->render(
+                    '/Reservation/contact_form.html.twig',
+                    ['field_error' => $emptyFieldError]
+                );
             }
         }
         return $this->twig->render('/Reservation/contact_form.html.twig');
     }
 
+
+    public function mailto()
+    {
+
+        $panier = $this->twig->render('emails/panier.html.twig', ['cart' => $_SESSION['cart'],]);
+
+
+        $entete  = 'MIME-Version: 1.0' . "\r\n";
+        $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+        $entete .= 'From: strascook@monsite.fr' . "\r\n";
+        $entete .= 'Reply-to: strascook@monsite.fr';
+
+        $destinataire = 'kutuk.suleymann@gmail.com,' . $_SESSION['user_details']['email'] . '';
+        $contenu = ' Merci nous avons bien réceptionnée votre commande ' . '<br>';
+        $contenu .= '<br>' . 'Nom: ' . $_SESSION['user_details']['lastname'] . '<br>';
+        $contenu .= '<br>' . 'Prenom: ' . $_SESSION['user_details']['firstname'] . '<br>';
+        $contenu .= '<br>' . 'Numero: ' .  $_SESSION['user_details']['number'] . '<br>';
+        $contenu .= '<br>' . 'Adresse: ' .  $_SESSION['user_details']['street_num'] . ' '
+            . $_SESSION['user_details']['street'] . '<br>';
+
+        $contenu .= '<br>' . 'Ville: ' . $_SESSION['user_details']['city'] . '<br>';
+        $contenu .= '<br>' . 'Code-Postal: ' . $_SESSION['user_details']['post_code'] . '<br>';
+        $contenu .= '<br>' . 'E-mail: ' . $_SESSION['user_details']['email'] . '<br>';
+        $contenu .= '' . $panier . '<br>';
+        $contenu .= "<img 
+            src='https://i.ibb.co/FsLK0CW/Logo-Strascook-Alpha.png' 
+            width='300px' height='150px'/>";
+
+        mail($destinataire, 'Strascook', $contenu, $entete);
+    }
+
+
+
+
+
     public function validation()
     {
         return $this->twig->render('Panier/validation.html.twig');
     }
+
+
+
+
 
     public function orderRecap()
     {
@@ -127,6 +169,7 @@ class PanierController extends AbstractController
     {
         $panierManager = new PanierManager();
         $panierManager->insertOrder($_SESSION);
+        $this->mailto();
         return $this->twig->render('Panier/order_confirmation.html.twig');
     }
 }

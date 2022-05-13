@@ -27,3 +27,8 @@ margin: auto;
 a {
     text-decoration: none;
 }
+
+.preview {
+    object-fit: cover;
+    height:280px;
+}
