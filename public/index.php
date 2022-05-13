@@ -9,11 +9,11 @@ session_start();
  * Time: 14:01
  */
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once '/home/u549394581/domains/hugo-marx.com/strascook/vendor/autoload.php';
 
 if (getenv('ENV') === false) {
-    require_once __DIR__ . '/../config/debug.php';
-    require_once __DIR__ . '/../config/db.php';
+    require_once '/home/u549394581/domains/hugo-marx.com/strascook/config/debug.php';
+    require_once '/home/u549394581/domains/hugo-marx.com/strascook/config/db.php';
 }
-require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../src/routing.php';
+require_once '/home/u549394581/domains/hugo-marx.com/strascook/config/config.php';
+require_once '/home/u549394581/domains/hugo-marx.com/strascook/src/routing.php';
