@@ -13,7 +13,7 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
-    'admin' => ['BackofficeController', 'dashboard'],
+    'admin' => ['BackOfficeController', 'dashboard'],
     'backoffice/add' => ['BackOfficeController', 'add'],
     'backoffice/delete' => ['BackOfficeController', 'delete'],
     'backoffice/edit' => ['BackOfficeController', 'edit', ['id']],
