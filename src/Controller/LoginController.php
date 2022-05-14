@@ -13,7 +13,7 @@ class LoginController extends AbstractController
     {
         $message = (isset($_GET['message'])) ? $_GET['message'] : '';
         if (isset($_SESSION['login'])) {
-            header('location:/admin');
+            header('location: /backoffice/dashboard');
         } else {
             return $this->twig->render(
                 'Login/index.html.twig',
@@ -25,7 +25,6 @@ class LoginController extends AbstractController
     }
 
 
-
     public function loginCheck()
     {
 
@@ -34,7 +33,7 @@ class LoginController extends AbstractController
             $login = $user->selectOneByIdUserPass($_POST);
             if ($login) {
                 $_SESSION['login'] = $login['user_name'];
-                header('location: /admin');
+                header('location: /backoffice/dashboard');
                 return;
             }
             header('location:/login?message=nop');
