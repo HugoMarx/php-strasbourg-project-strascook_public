@@ -5,7 +5,7 @@
 
 {% block content %}
 
-	<section class="products container col-md-9">
+	<section class="products container col-md-9 mt-5">
 		<div class="row">
 			<h1>Mon panier</h1>
 			{% if user.cart is empty %}
@@ -57,45 +57,46 @@
 										</a>
 									</td>
 								</tr>
-							</td>
+
+
+							{% endfor %}
+
 						</tbody>
-					</tr>
-				{% endfor %}
+						<tfoot>
+							<th></th>
+							<td></td>
+							<th colspan='0' class='text-center'>Total</th>
+							<td class='text-center'>{{total_item}}</td>
+							<td></td>
+							<td class='text-end'>{{total_price}}€</td>
+							<td></td>
+						</tfoot>
 
-			</tbody>
-			<tfoot>
-				<th></th>
-				<td></td>
-				<th colspan='0' class='text-center'>Total</th>
-				<td class='text-center'>{{total_item}}</td>
-				<td></td>
-				<td class='text-end'>{{total_price}}€</td>
-				<td></td>
-			</tfoot>
+					</table>
+					<div class="text-end">
+						<a href="panier/empty">
+							<button type="button" class="btn btn-danger btn-sm">Vider le panier</button>
+						</a>
+					</div>
+					<div class="text-center">
 
-		</table>
+						{% if user.user_details is empty %}
 
-		<div class="text-end">
-			<a href="panier/empty">
-				<button type="button" class="btn btn-danger btn-sm">Vider le panier</button>
-			</a>
-		</div>
+							<a href="/reservation?from=cart">
+								<button type="button" class="btn btn-primary">Valider mon panier</button>
+							</a>
+						{% else %}
 
-		<div class="text-center">
+							<a href="panier/validation">
+								<button type="button" class="btn btn-primary">Valider mon panier</button>
+							</a>
+						{% endif %}
+					</div>
 
-			{% if user.user_details is empty %}
-
-				<a href="/reservation?from=cart">
-					<button type="button" class="btn btn-primary">Valider mon panier</button>
-				</a>
-			{% else %}
-
-				<a href="panier/validation">
-					<button type="button" class="btn btn-primary">Valider mon panier</button>
-				</a>
+				</section>
+                {% else %}
+                    <div class='container emptyblock'></div>
 			{% endif %}
-
-
 		</div>
-	{% endif %}
-</div></section>{% endblock %}
+	</section>
+{% endblock %}
