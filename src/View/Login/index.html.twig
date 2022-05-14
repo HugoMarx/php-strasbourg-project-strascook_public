@@ -1,9 +1,10 @@
 {% extends 'layout.html.twig' %}
-{% block content  %}
 
+{% block content  %}
 
 	<!-- Section: Design Block -->
 	<section class="text-center">
+
 		{% if message is not empty %}
 			<div class=" pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center   alert alert-danger " role="alert">
 				Identifiant incorrect
@@ -20,7 +21,7 @@
 					<div class="col-lg-8">
 						<h2 class="fw-bold mb-5">Administrateur StrasCook</h2>
 						<form
-							action="login/check" method="post">
+							action="/login/check" method="post">
 							<!-- 2 column grid layout with text inputs for the first and last names -->
 							<div class="row justify-content-center">
 								<div class="col-md-5 mb-1">
