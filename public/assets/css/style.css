@@ -76,7 +76,11 @@ li a:hover:after {
 }
 
 .nav-link {
-    margin-right: 4rem;
+    margin-right: 1rem;
+}
+
+.navbar-nav li a {
+    font-size: 1.3rem;
 }
 
 .get-in-touch {
