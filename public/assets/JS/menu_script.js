@@ -28,25 +28,44 @@ function deleteItem() {
 addItem();
 deleteItem();
 
+let filters = document.querySelector("#filtre-plat");
 
+filters.addEventListener("change", function (event) {
+    let product_type = event.target.value;
+    let products = document.querySelectorAll(".col-xs");
+    let starter = document.querySelectorAll(`.starter`);
+    let main = document.querySelectorAll(`.main`);
+    let dessert = document.querySelectorAll(`.dessert`);
+    let drink = document.querySelectorAll(`.drink`);
+    // console.log(main);
 
-let filters = document.querySelectorAll('input[type="radio"]');
-filters.forEach(function(filter) {
-    filter.addEventListener('click', function(e) {
-        let product_type = e.target.id;
-        let products = document.querySelectorAll('.col-xs');
-        let productsFilter = document.querySelectorAll(`.${product_type}`);
-        products.forEach(function(product) {
-                if (product.classList.contains('col-xs')) {
-                    if (document.querySelector('input[id="all"]').checked) {
-                        product.style.display = 'flex';
-                    } else if (filter.id==product.id && filter.checked) {
-                        product.style.display = 'flex';
-                    } else if (filter.id!=product.id && filter.checked) {
-                        product.style.display = 'none';
-                    }
-                }
-            
-        });
-    });
+    if (product_type === "all") {
+        for (i = 0; i < products.length; i++) {
+            products[i].style.display = "flex";
+        }
+    } else {
+        for (i = 0; i < products.length; i++) {
+            products[i].style.display = "none";
+        }
+
+        if (product_type === "starter") {
+            for (i = 0; i < starter.length; i++)
+                starter[i].style.display = "flex";
+        }
+
+        if (product_type === "main") {
+            for (i = 0; i < main.length; i++)
+                main[i].style.display = "flex";
+        }
+
+        if (product_type === "dessert") {
+            for (i = 0; i < starter.length; i++)
+                dessert[i].style.display = "flex";
+        }
+
+        if (product_type === "drink") {
+            for (i = 0; i < starter.length; i++)
+                drink[i].style.display = "flex";
+        }
+    }
 });
