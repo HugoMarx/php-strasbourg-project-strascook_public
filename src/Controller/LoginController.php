@@ -12,6 +12,7 @@ class LoginController extends AbstractController
     public function index()
     {
         $message = (isset($_GET['message'])) ? $_GET['message'] : '';
+
         if (isset($_SESSION['login'])) {
             header('location: /backoffice/dashboard');
         } else {
@@ -36,7 +37,7 @@ class LoginController extends AbstractController
                 header('location: /backoffice/dashboard');
                 return;
             }
-            header('location:/login?message=nop');
+            header('location:/login?message=incorrect');
         }
     }
 
