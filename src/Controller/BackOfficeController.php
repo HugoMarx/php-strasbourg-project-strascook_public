@@ -93,7 +93,7 @@ class BackOfficeController extends AbstractController
                     // clean $_POST data
                     $product = array_map('trim', $_POST);
                     $productsManager->updateProduct($product);
-                    header('Location: /admin');
+                    header('Location: /backoffice/dashboard');
                 } else {
                     return  $this->twig->render(
                         'Back_office/edit_item.html.twig',

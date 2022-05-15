@@ -117,11 +117,11 @@ class PanierController extends AbstractController
 
         $entete  = 'MIME-Version: 1.0' . "\r\n";
         $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-        $entete .= 'From: strascook@monsite.fr' . "\r\n";
-        $entete .= 'Reply-to: strascook@monsite.fr';
+        $entete .= 'From: confirmation@mstrascook.fr' . "\r\n";
+        $entete .= 'Reply-to: confirmation@strascook.fr';
 
         $destinataire = 'kutuk.suleymann@gmail.com,' . $_SESSION['user_details']['email'] . '';
-        $contenu = ' Merci nous avons bien réceptionnée votre commande ' . '<br>';
+        $contenu = ' Merci nous avons bien réceptionné votre commande ' . '<br>';
         $contenu .= '<br>' . 'Nom: ' . $_SESSION['user_details']['lastname'] . '<br>';
         $contenu .= '<br>' . 'Prenom: ' . $_SESSION['user_details']['firstname'] . '<br>';
         $contenu .= '<br>' . 'Numero: ' .  $_SESSION['user_details']['number'] . '<br>';
@@ -132,8 +132,8 @@ class PanierController extends AbstractController
         $contenu .= '<br>' . 'Code-Postal: ' . $_SESSION['user_details']['post_code'] . '<br>';
         $contenu .= '<br>' . 'E-mail: ' . $_SESSION['user_details']['email'] . '<br>';
         $contenu .= '' . $panier . '<br>';
-        $contenu .= "<img 
-            src='https://i.ibb.co/FsLK0CW/Logo-Strascook-Alpha.png' 
+        $contenu .= "<img
+            src='https://i.ibb.co/FsLK0CW/Logo-Strascook-Alpha.png'
             width='300px' height='150px'/>";
 
         mail($destinataire, 'Strascook', $contenu, $entete);
