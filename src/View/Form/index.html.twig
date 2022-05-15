@@ -1,10 +1,15 @@
 {% extends "layout.html.twig" %}
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/contact_style.css">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/contact_style.css">
+{% endblock %}
 {% block content %}
 
 
 	<section class="get-in-touch">
-		<h1 class="title">Merci de bien vouloir remplir ce formulaire</h1>
+		<div class="title col-10 col-lg-6 m-auto">
+			<h1>Une question ?
+			</h1>
+			<h2>N'hésitez pas à nous écrire !</h2>
+		</div>
 
 		{% if errors is defined %}
 			<div class=" pill rounded-pill border border-2 p-2 my-5 shadow-sm text-center   alert alert-danger " role="alert">
@@ -16,46 +21,35 @@
 				Nous avons bien recu votre demande
 			</div>
 		{% endif %}
-		<form class="contact-form row" method="POST" action="/form">
-			<div class="form-field col-lg-6">
-				<input class="input-text js-input" type="text" name="nom" value="{{ data.nom }}">
-				<label class="label" for="Nom">Nom</label>
-			</div>
-			<div class="form-field col-lg-6">
-				<input class="input-text js-input" type="text" name="prenom" value="{{ data.prenom }}">
-				<label class="label" for="Prénom">Prénom</label>
-			</div>
-			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="text" name="adresse" value="{{ data.adresse }}">
-				<label class="label" for="Adresse">Adresse</label>
-			</div>
-			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="text" name="postal" value="{{ data.postal }}">
-				<label class="label" for="Postal">Code Postal</label>
-			</div>
-			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="text" name="ville" value="{{ data.ville }}">
-				<label class="label" for="ville">Ville</label>
-			</div>
-			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="email" name="email" value="{{ data.email }}">
-				<label class="label" for="email">E-mail</label>
-			</div>
+		<div class="container">
+            <form class="contact-form row justify-content-center justify-content-lg-start" method="POST" action="/form">
+                <div class="form-field col-10 col-lg-6">
+                    <input class="input-text js-input" type="text" name="nom" value="{{ data.nom }}">
+                    <label class="label" for="Nom">Nom</label>
+                </div>
+                <div class="form-field col-10 col-lg-6">
+                    <input class="input-text js-input" type="text" name="prenom" value="{{ data.prenom }}">
+                    <label class="label" for="Prénom">Prénom</label>
+                </div>
 
-			<div class="form-field col-lg-6 ">
-				<input class="input-text js-input" type="text" name="telephone" value="{{ data.telephone }}">
-				<label class="label" for="phone">Téléphone</label>
-			</div>
+                <div class="form-field col-10 col-lg-6 ">
+                    <input class="input-text js-input" type="email" name="email" value="{{ data.email }}">
+                    <label class="label" for="email">E-mail</label>
+                </div>
+                <div class="form-field col-10 col-lg-6 ">
+                    <input class="input-text js-input" type="text" name="telephone" value="{{ data.telephone }}">
+                    <label class="label" for="phone">Téléphone</label>
+                </div>
+                <div class="form-field col-10 col-lg-12">
+                <textarea class="input-text js-input" name="message" value="{{ data.message }}"></textarea>
 
-			<div class="form-field col-lg-12">
-				<input class="input-text js-input" type="text" name="message" value="{{ data.message }}">
-				<label class="label" for="message">Message</label>
-			</div>
-			<div class="form-field col-lg-12">
-				<input class="submit-btn" type="submit" value="Envoyer">
-
-			</div>
-		</form>
+                    <label class="label" for="message">Message</label>
+                </div>
+                <div class="form-field col-10 col-lg-12 text-center">
+                    <input class="submit-btn" type="submit" value="Envoyer">
+                </div>
+            </form>
+        </div>
 	</section>
 
 {% endblock %}

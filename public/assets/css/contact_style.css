@@ -3,13 +3,20 @@
     margin: 50px auto;
     position: relative;
 }
-.get-in-touch .title {
+.title {
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 1em;
-    line-height: 48px;
     padding-bottom: 48px;
+
+}
+
+.title h1{
+    font-size: 1.8rem;
+    color: #72a603;
+}
+
+.title h2{
+    font-size: 1.2rem;
     color: #72a603;
 }
 
