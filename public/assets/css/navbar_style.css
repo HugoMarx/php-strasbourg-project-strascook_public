@@ -1,0 +1,67 @@
+.logo-main {
+    display: block;
+    margin: auto;
+    max-width: 20rem;
+}
+
+li a {
+    text-decoration: none;
+    line-height: 4rem;
+    text-align: center;
+    color: #444444;
+    font-size: 2rem;
+}
+li a:after {
+    content: "";
+    display: block;
+    margin-bottom: 1px;
+    height: 1px;
+    width: 1px;
+    background: transparent;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+li a:hover:after {
+    width: 70%;
+    background: #444;
+}
+
+.nav-link {
+    margin-right: 1rem;
+}
+
+.navbar-nav li a {
+    font-size: 1.3rem;
+}
+
+@media screen and (max-width: 950px) {
+    li a:hover:after {
+        width: 20%;
+        background: #444;
+    }
+
+    li a {
+        text-decoration: none;
+        line-height: 4rem;
+        text-align: center;
+        color: #444444;
+        font-size: 19px;
+    }
+}
+
+@media screen and (max-width: 1411px) and (min-width: 990px) {
+    li a {
+        text-decoration: none;
+        line-height: 2rem;
+        text-align: center;
+        color: #444444;
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-link {
+        margin: 0 0 0 0;
+height: 3rem;
+
+    }
+}
