@@ -27,16 +27,16 @@
 	<div class="container">
 
 		<div class="d-flex justify-content-end">
-            <div class='col-12 col-md-3 col-lg-2 text-end'>
-                    <p class='m-0 mb-1'>Trier par</p>
-                        <select class="form-select mb-3" aria-label="Default select example" id='filtre-plat'>
-                            <option value='all' selected>Tous les plats</option>
-                            {% for filtre in filtres %}
-                                <option value="{{ filtre.type }}" id="{{ filtre.type}}">{{ filtre.type }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-        </div>
+			<div class='col-12 col-md-3 col-lg-2 text-end'>
+				<p class='m-0 mb-1'>Trier par</p>
+				<select class="form-select mb-3" aria-label="Default select example" id='filtre-plat'>
+					<option value='all' selected>Tous les plats</option>
+					{% for filtre in filtres %}
+						<option value="{{ filtre.type }}" id="{{ filtre.type}}">{{ filtre.type }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
 
 		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
 
@@ -80,11 +80,9 @@
 									<div class="text-center"><input class="btn col submit-custom mt-2" type="submit" value='Ajouter'></div>
 								</form>
 							{% else %}
-								<div class="messagereservation" role="alert">
-									Remplissez d'abord les conditions de reservation pour ajouter au panier
+								<div class="text-center">
+									<a class="btn col  " href="/reservation">Ajouter au panier</a>
 								</div>
-
-								<a class="btn col  " href="/reservation">Réserver</a>
 							{% endif %}
 						</div>
 
