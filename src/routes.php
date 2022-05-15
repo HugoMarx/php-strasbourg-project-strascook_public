@@ -10,7 +10,7 @@ return [
     '' => ['HomeController', 'index',],
     'login' => ['LoginController', 'index',],
     'login/check' => ['LoginController', 'loginCheck',],
-    'logout' => ['loginController', 'logout',],
+    'logout' => ['LoginController', 'logout',],
     'backoffice/dashboard' => ['BackOfficeController', 'dashboard'],
     'backoffice/add' => ['BackOfficeController', 'add'],
     'backoffice/delete' => ['BackOfficeController', 'delete'],
