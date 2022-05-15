@@ -60,7 +60,7 @@ li a:hover:after {
 
 @media screen and (max-width: 768px) {
     .nav-link {
-        margin: 0 0 0 0;
+        margin: 0;
 height: 3rem;
 
     }
