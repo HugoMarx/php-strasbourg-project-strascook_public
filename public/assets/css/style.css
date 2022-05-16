@@ -16,11 +16,7 @@
     font-family: "Montserrat", sans-serif;
 }
 
-.pill {
-    width: 20rem;
-    letter-spacing: 2px;
-    margin: auto;
-}
+
 .btn.ac {
     background-image: linear-gradient(125deg, #72a603, #c0d904);
     color: white;
