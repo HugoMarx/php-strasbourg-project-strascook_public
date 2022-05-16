@@ -27,7 +27,7 @@
 
 						<div class="row g-0 align-items-center">
 							<div class="col-5 col-md-4 h-100 ">
-								<img src="{% if product.product_image_id is null %}https://cdn-icons.flaticon.com/png/512/2515/premium/2515263.png?token=exp=1652125766~hmac=69bed578c54a82030f29493731d818d3 {% else %} /assets/images/{{ product.product_image_id}} {% endif %}" class="img-fluid rounded-start default-pict preview" alt="default food picture">
+								<img src="{% if product.product_image_id is null %} /assets/images/salad.png {% else %} /assets/images/{{ product.product_image_id}} {% endif %}" class="img-fluid rounded-start default-pict preview" alt="default food picture">
 							</div>
 							<div class=" col-7 col-md-8">
 								<div class="card-body">
