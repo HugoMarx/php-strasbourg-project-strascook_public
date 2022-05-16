@@ -1,5 +1,9 @@
 @import url(./style.css) root;
 
+.card-img-top {
+    object-fit: fill;
+}
+
 .qte-selector input {
 width: 30%;
     border: 1px solid lightgray;

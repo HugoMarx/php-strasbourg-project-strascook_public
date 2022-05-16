@@ -39,14 +39,14 @@
 
 			<a class="" href="/login">
 				<button class="btn btn-warning">🔒 Admin
-					{{ user.login }}</button>
+					</button>
 			</a>
 
 		{% else %}
 
 			<a class="" href="/login">
 				<button class="btn btn-warning">🔒 Admin
-					{{ user.login }}</button>
+					{{user.login |capitalize}}</button>
 			</a>
 
 			<a href="/logout">

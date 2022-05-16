@@ -9,10 +9,10 @@
 
 {% block content %}
 
-	<h1 class='text-center mt-5 fs-2 rounded-pill border border-4 p-4 my-5 w-50 m-auto shadow-sm '>Ajoutez un nouveau produit à votre carte 🥑</h1>
+	<h1 class='text-center mt-5 fs-2 rounded-pill border border-4 p-4 my-5 m-auto shadow-sm col-11 col-md-7 col-lg-5 '>Ajoutez un nouveau produit à votre carte 🥑</h1>
 
 	{% if fieldError is not empty %}
-		<div class="container text-center w-50 p-0  ">
+		<div class="container text-center col-10 col-md-4 col-lg-3 p-0  ">
 			<div class="alert alert-danger d-flex justify-content-center m-auto mt-5 flex-wrap " role="alert">
 
 				<h5>Veuillez renseigner les champs suivants :
@@ -29,7 +29,7 @@
 	{% endif %}
 
 	{% if fileError is not empty %}
-		<div class="container text-center w-50 p-0  ">
+		<div class="container text-center col-10 col-md-4 col-lg-3 p-0  ">
 			<div class="alert alert-danger d-flex justify-content-center m-auto mt-5 flex-wrap " role="alert">
 
 				<h5>Un problème de fichier est survenu :
@@ -48,12 +48,14 @@
 	{% include "Back_office/_formbase.html.twig" %}
 
 	{% if fileIsValid == true %}
-		<div class="container text-center w-50 p-0 ">
+		<div class="container text-center  col-10 col-md-4 col-lg-3 p-0 ">
 			<div class="alert alert-success d-flex justify-content-center m-auto mt-5 flex-wrap " role="alert">
 
 				<h5 class='m-0'>Produit enregistré avec succès !</h5>
 
 			</div>
+            <div class="text-center">
+            <a href="/backoffice/dashboard"><button class='btn btn-primary mt-2'>Retour</button></a></div>
 		</div>
 
 
