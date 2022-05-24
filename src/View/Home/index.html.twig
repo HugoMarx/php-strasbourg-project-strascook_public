@@ -1,6 +1,37 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+
+	<div class="fixed-top">
+
+		<div class="toast position-absolute top-0 end-0 my-auto m-0 mt-sm-4 me-sm-3" role="alert" aria-live="assertive" aria-atomic="true" id="myToast" data-bs-autohide="false" data-bs-animation="true">
+			<div class="toast-header">
+				<a href="https://github.com/HugoMarx" target="_blank"><img src="/assets/images/HM_rounded.png" class="rounded me-2" width="50px"></a>
+
+				<strong class="m-auto">Bienvenue sur Strascook !</strong>
+
+				<button type="button" class="btn-close me-1" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+
+			<div class="toast-body text-">
+				<p>Strascook est un projet développé en collaboration avec
+					<a href="https://github.com/SophieVerdier" target="_blank">@SophieVerdier</a>
+					et
+					<a href="https://github.com/SuleymanKutuk" target="_blank">@SuleymanKutuk</a>
+					dans le cadre de la formation de développement web à la Wild Code School Strasbourg.
+                    </p>
+                    <p>Work in progress: son développement continue !</p>
+				<div class="d-flex justify-content-between">
+					<p>Bonne visite ✨</p>
+					<a href="https://github.com/HugoMarx/php-strasbourg-project-strascook_public">
+						<button type="button" class="btn btn-primary btn-sm" target="_blank">GitHub</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<div class="containe text-center">
 		<div class="pill rounded-pill border border-2 p-2 my-5 shadow-sm  col-11 col-md-8 col-lg-5 m-auto">
 			<h4 class='m-0'>BIENVENUE</h>
